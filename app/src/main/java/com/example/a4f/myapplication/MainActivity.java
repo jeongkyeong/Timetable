@@ -12,6 +12,11 @@ import android.widget.TextView;
 import android.widget.Button;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.Statement;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,4 +33,5 @@ public class MainActivity extends AppCompatActivity {
     public void onButtonClick2(View v) {
         setContentView(R.layout.activity_main22);
     }
+
 }
