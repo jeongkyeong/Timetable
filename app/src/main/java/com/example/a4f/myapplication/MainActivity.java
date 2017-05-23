@@ -60,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
+
     public void onButtonClick1(View v) {
         setContentView(R.layout.activity_main2);
     }
@@ -68,4 +70,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main22);
     }
 
+    public void onButtonClick3(View view) {
+        setContentView(R.layout.activity_main);
+    }
 }

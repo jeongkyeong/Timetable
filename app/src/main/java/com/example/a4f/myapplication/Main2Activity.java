@@ -1,15 +1,10 @@
 package com.example.a4f.myapplication;
 
-import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.TextView;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.Statement;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
 public class Main2Activity extends AppCompatActivity {
 
@@ -19,4 +14,9 @@ public class Main2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
     }
+
+    public void onButtonClick3(View v) {
+        setContentView(R.layout.activity_main);
+    }
+
 }

@@ -11,9 +11,9 @@
 
     <TextView
         android:id="@+id/textView1"
-        android:layout_width="119dp"
-        android:layout_height="26dp"
-        android:layout_marginLeft="32dp"
+        android:layout_width="126dp"
+        android:layout_height="28dp"
+        android:layout_marginLeft="30dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="27dp"
         android:text="REGISTER"
@@ -41,7 +41,7 @@
         tools:layout_constraintBaseline_creator="1"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_editor_absoluteY="396dp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/button2" />
 
     <Button
         android:id="@+id/button2"
@@ -51,6 +51,7 @@
         android:layout_marginRight="54dp"
         android:layout_marginTop="42dp"
         android:text="Cancel"
+        android:onClick="onButtonClick3"
         app:layout_constraintRight_toRightOf="@+id/editText6"
         app:layout_constraintTop_toBottomOf="@+id/editText6"
         tools:layout_constraintRight_creator="1"
