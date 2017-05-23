@@ -106,7 +106,13 @@
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1" />
 
-
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="To check DB"
+        tools:layout_editor_absoluteX="65dp"
+        tools:layout_editor_absoluteY="37dp" />
 
 
 </android.support.constraint.ConstraintLayout>

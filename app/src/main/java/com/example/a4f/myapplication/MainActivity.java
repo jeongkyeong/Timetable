@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void testDB(){
 
-        TextView textView = (TextView)this.findViewById(R.id.textView);
+        TextView textView = (TextView)this.findViewById(R.id.textView3);
         try{
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
