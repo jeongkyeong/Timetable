@@ -28,9 +28,9 @@ public class MainActivity extends AppCompatActivity {
         testDB();
     }
 
-    private static final String url = "jdbc:mysql://localhost:8080/test"; //test is name of your db
+    private static final String url = "jdbc:mysql://localhost:3306/test"; //test is name of your db
     private static final String user = "root";
-    private static final String pass = "1234";
+    private static final String pass = "123456";
 
     public void testDB(){
 
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
             String result = "Database connection success\n";
             Statement st = connection.createStatement();
-            ResultSet resultSet = st.executeQuery("select * from Persons");
+            ResultSet resultSet = st.executeQuery("select * from users");
             ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
 
             while(resultSet.next()){
