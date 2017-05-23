@@ -22,7 +22,7 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-dependencies {
-    compile files ('libs/mysql-connector-java-5.1.42-bin.jar')
-
-}
+//dependencies {
+ //   apply plugin: 'java'
+  //  compile('libs/mysql-connector-java-5.1.42-bin.jar')
+//}
