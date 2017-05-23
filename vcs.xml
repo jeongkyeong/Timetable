@@ -10,8 +10,12 @@
           <option name="url" value="https://github.com/jeongkyeong/Timetable.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/christyeum/Timetable.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
-    <option name="cloneParentDir" value="D:\Android\MyApplication" />
+    <option name="cloneParentDir" value="D:\Android\MyApplication\TimeTable_0523" />
   </component>
 </application>
