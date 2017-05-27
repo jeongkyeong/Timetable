@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.a4f.myapplication.Main2Activity"
+    tools:layout_editor_absoluteY="81dp"
+    tools:layout_editor_absoluteX="0dp">
+
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="126dp"
+        android:layout_height="28dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="27dp"
+        android:text="REGISTER"
+        android:textColor="@color/colorPrimaryDark"
+        android:textColorLink="@color/colorPrimaryDark"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintTop_creator="1" />
+
+    <Button
+        android:id="@+id/btnJoin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="44dp"
+        android:layout_marginLeft="46dp"
+        android:layout_marginRight="44dp"
+        android:layout_marginStart="46dp"
+        android:text="Join"
+        android:onClick="onReg"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="@+id/etRegDept"
+        app:layout_constraintRight_toLeftOf="@+id/btnCancel"
+        tools:layout_constraintBaseline_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnCancel" />
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="54dp"
+        android:layout_marginRight="54dp"
+        android:layout_marginTop="42dp"
+        android:text="Cancel"
+        android:onClick="onButtonClick3"
+        app:layout_constraintRight_toRightOf="@+id/etRegDept"
+        app:layout_constraintTop_toBottomOf="@+id/etRegDept"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
+
+    <EditText
+        android:id="@+id/etRegName"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:hint = "Name"
+        android:inputType="textPersonName"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="84dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        app:layout_constraintHorizontal_bias="0.0" />
+
+    <EditText
+        android:id="@+id/etRegId"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:hint = "Username"
+        android:inputType="textPersonName"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etRegName"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp" />
+
+    <EditText
+        android:id="@+id/etRegPW"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:hint = "Password"
+        android:inputType="textPassword"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/etRegId"
+        app:layout_constraintTop_toBottomOf="@+id/etRegId"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/etRegId" />
+
+    <EditText
+        android:id="@+id/etRegPW2"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:hint = "Password confirm"
+        android:inputType="textPassword"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/etRegPW"
+        app:layout_constraintTop_toBottomOf="@+id/etRegPW"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/etRegPW" />
+
+    <EditText
+        android:id="@+id/etRegUniv"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:hint = "University"
+        android:inputType="textPersonName"
+        app:layout_constraintRight_toRightOf="@+id/etRegPW2"
+        app:layout_constraintTop_toBottomOf="@+id/etRegPW2"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/etRegPW2"
+        tools:layout_constraintRight_creator="1" />
+
+    <EditText
+        android:id="@+id/etRegDept"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:hint = "Department"
+        android:inputType="textPersonName"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/etRegUniv"
+        app:layout_constraintTop_toBottomOf="@+id/etRegUniv"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/etRegUniv" />
+</android.support.constraint.ConstraintLayout>

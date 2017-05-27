@@ -27,7 +27,14 @@
             android:name=".Main22Activity"
             android:label="@string/title_activity_main22"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".AccountActivity" />
+        <activity
+            android:name=".Register"
+            android:label="Register"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+        </activity>
+            .
+
+
     </application>
 
 </manifest>
