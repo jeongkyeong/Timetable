@@ -54,7 +54,7 @@
         app:layout_constraintHorizontal_bias="1.0" />
 
     <EditText
-        android:id="@+id/etRegId"
+        android:id="@+id/etPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -83,7 +83,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etRegId"
+        app:layout_constraintTop_toBottomOf="@+id/etPassword"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1" />
