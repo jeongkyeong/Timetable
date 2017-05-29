@@ -1,8 +1,10 @@
 package com.example.a4f.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import java.text.SimpleDateFormat;
@@ -24,6 +26,16 @@ public class Register extends AppCompatActivity {
         userName=(EditText)findViewById(R.id.etRegId);
         password = (EditText) findViewById(R.id.etRegPW);
         dept=(EditText)findViewById(R.id.etRegDept);
+        Button cancel;
+        cancel = (Button)findViewById(R.id.btnCancel);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Register.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     public void onReg(View view)

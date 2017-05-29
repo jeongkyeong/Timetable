@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.a4f.myapplication.Main2Activity"
+    tools:context="com.example.a4f.myapplication.Register"
     tools:layout_editor_absoluteY="81dp"
     tools:layout_editor_absoluteX="0dp">
 
@@ -52,7 +52,6 @@
         android:layout_marginRight="54dp"
         android:layout_marginTop="42dp"
         android:text="Cancel"
-        android:onClick="onButtonClick3"
         app:layout_constraintRight_toRightOf="@+id/etRegDept"
         app:layout_constraintTop_toBottomOf="@+id/etRegDept"
         tools:layout_constraintRight_creator="1"
