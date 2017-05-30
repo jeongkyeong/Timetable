@@ -23,7 +23,7 @@
     <include layout="@layout/context_main" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/mypage"
+        android:id="@+id/fab"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
