@@ -1,8 +1,10 @@
 package com.example.a4f.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,7 +17,7 @@ import android.view.MenuItem;
 
 public class Main22Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    DrawerLayout drawer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +25,6 @@ public class Main22Activity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-/*
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,8 +33,8 @@ public class Main22Activity extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });
-*/
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
@@ -84,15 +85,18 @@ public class Main22Activity extends AppCompatActivity
         if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
+        Log.v("찍혔니","찍혔다");
 
         } else if (id == R.id.nav_slideshow) {
-
+            Log.v("찍혔니","찍혔다");
         } else if (id == R.id.nav_manage) {
-
+            drawer.closeDrawer(GravityCompat.START);
+            Intent i = new Intent(Main22Activity.this, MainActivity.class);
+            startActivity(i);
         } else if (id == R.id.nav_share) {
-
+            Log.v("찍혔니","찍혔다");
         } else if (id == R.id.nav_send) {
-
+            Log.v("찍혔니","찍혔다");
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

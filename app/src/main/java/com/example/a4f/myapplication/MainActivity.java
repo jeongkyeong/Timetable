@@ -69,7 +69,9 @@ public class MainActivity extends AppCompatActivity {
         String type = "login";
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
         backgroundWorker.execute(type, username, password);
-        setContentView(R.layout.activity_main22);
+        Intent i= new Intent(MainActivity.this,Main22Activity.class);
+        startActivity(i);
+        finish();
     }
 
     public void onButtonClick3(View view) {
