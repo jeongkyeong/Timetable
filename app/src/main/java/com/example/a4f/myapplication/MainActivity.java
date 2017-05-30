@@ -3,6 +3,7 @@ package com.example.a4f.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
@@ -61,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void openRegister(View v) {
         startActivity(new Intent(this, Register.class));
+        finish();
     }
 
     public void onLoginClick(View v) {
@@ -70,10 +72,6 @@ public class MainActivity extends AppCompatActivity {
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
         backgroundWorker.execute(type, username, password);
         startActivity(new Intent(this,NavActivity.class));
-    }
-
-    public void onButtonClick3(View view) {
-
-        setContentView(R.layout.activity_main);
+        finish();
     }
 }
