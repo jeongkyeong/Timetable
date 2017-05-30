@@ -28,8 +28,8 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
 
     protected String doInBackground(String... params) {
         String type = params[0];
-        String loginUrl= "http://192.168.25.60/login.php";
-        String regUrl = "http://192.168.25.60/register.php";
+        String loginUrl= "http://10.210.40.209/login.php";
+        String regUrl = "http://10.210.40.209/register.php";
         if(type.equals("login")) {      // send login information (id, pw) to apache server to check if it is ok.
             try {
                 String user_name = params[1];

@@ -17,7 +17,7 @@ import java.util.Date;
 public class Register extends AppCompatActivity {
     EditText name,password,userName,dept;
     String strName,strUN,strPW,strDept;
- //
+    //
     @Override
     protected  void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
