@@ -47,7 +47,7 @@ public class Register extends AppCompatActivity {
         String type="register";
         BackgroundWorker backgroundWorker=new BackgroundWorker(this);
         backgroundWorker.execute(type,strName,strUN,strPW,strDept);
-        Intent i= new Intent(Register.this,Main22Activity.class);
+        Intent i= new Intent(Register.this,Register.class);
         startActivity(i);
         finish();
     }
