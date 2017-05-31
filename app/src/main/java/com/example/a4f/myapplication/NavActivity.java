@@ -83,11 +83,14 @@ public class NavActivity extends AppCompatActivity
         String title=getString(R.string.app_name);
         if (id == R.id.nav_account) {
 
-            // Handle the camera action
         } else if (id == R.id.nav_enter) {
-
+            drawer.closeDrawer(GravityCompat.START);
+            Intent i = new Intent(NavActivity.this, EntireTTActivity.class);
+            startActivity(i);
         } else if (id == R.id.nav_make) {
-
+            drawer.closeDrawer(GravityCompat.START);
+            Intent i = new Intent(NavActivity.this, MakeTTActivity.class);
+            startActivity(i);
         } else if (id == R.id.nav_logout) {
             drawer.closeDrawer(GravityCompat.START);
             Intent i = new Intent(NavActivity.this, MainActivity.class);
