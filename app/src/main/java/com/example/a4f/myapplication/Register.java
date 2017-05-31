@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,6 +17,7 @@ import java.util.Date;
 //register
 public class Register extends AppCompatActivity {
     EditText name,password,userName,dept;
+    Spinner grade;
     String strName,strUN,strPW,strDept;
     //
     @Override
@@ -26,6 +28,7 @@ public class Register extends AppCompatActivity {
         userName=(EditText)findViewById(R.id.etRegId);
         password = (EditText) findViewById(R.id.etRegPW);
         dept=(EditText)findViewById(R.id.etRegDept);
+        grade=(Spinner)findViewById(R.id.etRegGrade);
         Button cancel;
         cancel = (Button)findViewById(R.id.btnCancel);
         cancel.setOnClickListener(new View.OnClickListener() {

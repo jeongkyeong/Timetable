@@ -20,4 +20,12 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+     <string-array name="grade"> 
+    <item >Grade 1</item> 
+    <item >Grade 2</item> 
+    <item >Grade 3</item> 
+    <item >Grade 4</item> 
+     </string-array>
+
 </resources>
