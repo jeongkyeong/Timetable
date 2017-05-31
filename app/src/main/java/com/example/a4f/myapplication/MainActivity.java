@@ -63,8 +63,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
     public void openRegister(View v) {
         startActivity(new Intent(this, Register.class));
         finish();
