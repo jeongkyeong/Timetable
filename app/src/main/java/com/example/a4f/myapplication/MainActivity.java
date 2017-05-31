@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -17,12 +19,15 @@ import java.sql.Statement;
 
 
 public class MainActivity extends AppCompatActivity {
-    EditText userNameEt,passwordEt;
+    //EditText userNameEt, passwordEt;
+    TextView userNameEt,passwordEt;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        userNameEt = (EditText)findViewById(R.id.etUserName);
-        passwordEt = (EditText)findViewById(R.id.etPassword);
+        //  userNameEt = (EditText)findViewById(R.id.etRegId);
+        // passwordEt = (EditText)findViewById(R.id.etPassword);
+        userNameEt = (TextView)findViewById(R.id.idText);
+        passwordEt = (TextView)findViewById(R.id.passwordText);
         //testDB();
     }
 
