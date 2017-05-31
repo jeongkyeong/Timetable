@@ -94,6 +94,9 @@ public class NavActivity extends AppCompatActivity
             Intent i = new Intent(NavActivity.this, MakeTTActivity.class);
             startActivity(i);
         } else if (id == R.id.nav_options) {
+            drawer.closeDrawer(GravityCompat.START);
+            Intent i = new Intent(NavActivity.this, Option.class);
+            startActivity(i);
 
         } else if (id == R.id.nav_logout) {
             drawer.closeDrawer(GravityCompat.START);
