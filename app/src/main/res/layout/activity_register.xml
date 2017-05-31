@@ -31,31 +31,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="44dp"
-        android:layout_marginLeft="46dp"
-        android:layout_marginRight="44dp"
-        android:layout_marginStart="46dp"
+        android:layout_marginRight="-44dp"
         android:text="Join"
         android:onClick="onReg"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="@+id/etRegDept"
         app:layout_constraintRight_toLeftOf="@+id/btnCancel"
         tools:layout_constraintBaseline_creator="1"
-        tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btnCancel" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnCancel"
+        />
 
     <Button
         android:id="@+id/btnCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="54dp"
-        android:layout_marginRight="54dp"
-        android:layout_marginTop="42dp"
         android:text="Cancel"
-        app:layout_constraintRight_toRightOf="@+id/etRegDept"
-        app:layout_constraintTop_toBottomOf="@+id/etRegDept"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        app:layout_constraintLeft_toRightOf="@id/btnCancel"
+        app:layout_constraintTop_toBottomOf="@+id/etRegGrade"
+
+        android:layout_marginLeft="-190dp"
+        android:layout_marginTop="0dp" />
 
     <EditText
         android:id="@+id/etRegName"
@@ -121,32 +115,33 @@
         app:layout_constraintRight_toRightOf="@+id/etRegPW"
         app:layout_constraintTop_toBottomOf="@+id/etRegPW"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/etRegPW" />
-
-    <EditText
-        android:id="@+id/etRegUniv"
-        android:layout_width="0dp"
-        android:layout_height="45dp"
-        android:ems="10"
-        android:hint = "University"
-        android:inputType="textPersonName"
-        app:layout_constraintRight_toRightOf="@+id/etRegPW2"
-        app:layout_constraintTop_toBottomOf="@+id/etRegPW2"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/etRegPW2"
-        tools:layout_constraintRight_creator="1" />
+        app:layout_constraintLeft_toLeftOf="@+id/etRegPW"
+        android:layout_marginTop="0dp"
+        app:layout_constraintHorizontal_bias="0.0" />
 
     <EditText
         android:id="@+id/etRegDept"
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:ems="10"
-        android:hint = "Department"
+        android:hint="Department"
         android:inputType="textPersonName"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        app:layout_constraintRight_toRightOf="@+id/etRegUniv"
-        app:layout_constraintTop_toBottomOf="@+id/etRegUniv"
+        app:layout_constraintLeft_toLeftOf="@+id/etRegPW2"
+        app:layout_constraintRight_toRightOf="@+id/etRegPW2"
+        app:layout_constraintTop_toBottomOf="@+id/etRegPW2"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/etRegUniv" />
+        tools:layout_constraintRight_creator="1" />
+
+    <Spinner
+        android:id="@+id/etRegGrade"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginTop="4dp"
+        android:entries="@array/grade"
+        android:visibility="visible"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="@+id/etRegDept"
+        app:layout_constraintRight_toRightOf="@+id/etRegDept"
+        app:layout_constraintTop_toBottomOf="@+id/etRegDept" />
+
 </android.support.constraint.ConstraintLayout>
