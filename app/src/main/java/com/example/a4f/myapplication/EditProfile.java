@@ -21,10 +21,14 @@ public class EditProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.editprofile);
-
+    }
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(EditProfile.this, MyAccount.class);
+        startActivity(i);
+        finish();
 
     }
-
     public void btnEditClick(View view) {
         Toast.makeText(EditProfile.this, "Edit Clicked", Toast.LENGTH_SHORT).show();
     }
