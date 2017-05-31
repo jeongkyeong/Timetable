@@ -1,5 +1,6 @@
 package com.example.a4f.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -14,6 +15,9 @@ public class MyTT extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
+        Intent i = new Intent(MyTT.this, MyAccount.class);
+        startActivity(i);
+        finish();
 
     }
 
