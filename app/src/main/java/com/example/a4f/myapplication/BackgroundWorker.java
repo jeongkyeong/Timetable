@@ -2,8 +2,9 @@ package com.example.a4f.myapplication;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
-import android.widget.Toast;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -13,14 +14,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import cz.msebera.android.httpclient.HttpResponse;
-import cz.msebera.android.httpclient.client.HttpClient;
-import cz.msebera.android.httpclient.client.methods.HttpGet;
-import cz.msebera.android.httpclient.impl.client.HttpClientBuilder;
-
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URI;
 import java.net.URLEncoder;
 import java.lang.String;
 /**
@@ -37,6 +32,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
 
     protected String doInBackground(String... params) {
         String type = params[0];
+        String data = "";
         String loginUrl= "http://timetable.dothome.co.kr/login.php";
         String regUrl = "http://timetable.dothome.co.kr/register.php";
         String editUrl = "http://timetable.dothome.co.kr/edit.php";
@@ -62,15 +58,22 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 outputStream.close();
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
-                String result="";
+                StringBuffer buff = new StringBuffer();
                 String line="";
+
                 while((line = bufferedReader.readLine())!= null) {
-                    result += line;
+                    buff.append(line + "\n");
+                }
+                data = buff.toString().trim();
+                if(data.equals("1")){
+                    Log.e("RESULT","LOG IN SUCCESS");
+                }else{
+                    Log.e("RESULT","INVALID USERNAME OR PASSWORD");
                 }
                 bufferedReader.close();
                 inputStream.close();
                 httpURLConnection.disconnect();
-                return result;
+                return data;
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -118,9 +121,46 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 e.printStackTrace();
             }
         }else if(type.equals("edit")) {
-           /////////////////////////////////
+            try {
+                String name = params[1];
+                String user_name = params[2];
+                String password = params[3];
+                String dept = params[4];
+                String grade = params[5];
+                URL url = new URL(editUrl);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream outputStream = httpURLConnection.getOutputStream();
 
-
+                //send register data to the apache.
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                String post_data = URLEncoder.encode("name", "UTF-8") + "=" + URLEncoder.encode(name, "UTF-8") + "&"
+                        + URLEncoder.encode("user_name", "UTF-8") + "=" + URLEncoder.encode(user_name, "UTF-8") + "&"
+                        + URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(password, "UTF-8") + "&"
+                        + URLEncoder.encode("dept", "UTF-8") + "=" + URLEncoder.encode(dept, "UTF-8") + "&"
+                        + URLEncoder.encode("grade", "UTF-8") + "=" + URLEncoder.encode(grade,"UTF-8");
+                bufferedWriter.write(post_data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+                String result = "";
+                String line = "";
+                while ((line = bufferedReader.readLine()) != null) {
+                    result += line;
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return result;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }else if(type.equals("course list")){
             try {
                 String credit = params[1];
@@ -158,19 +198,19 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
     }
 
     @Override
-    protected void onPostExecute(String result) {
+    protected void onPostExecute(String data) {
         try{
-            //alertDialog=AlertDialog.Builder()
+           // alertDialog=new AlertDialog.Builder(context).create();
 
-            //alertDialog.show();
+          //  alertDialog.show();
         }catch(Exception e){
             e.printStackTrace();
         }
+
     }
 
     @Override
     protected void onProgressUpdate(Void... values) {
         super.onProgressUpdate(values);
     }
-
 }

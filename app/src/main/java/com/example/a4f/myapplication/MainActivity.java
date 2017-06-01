@@ -67,13 +67,13 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    public void onLoginClick(View v) {
+    public void onLoginClick(View v,String data) {
         String username = userNameEt.getText().toString();
         String password = passwordEt.getText().toString();
         String type = "login";
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
         backgroundWorker.execute(type, username, password);
-        startActivity(new Intent(this,NavActivity.class));
+        startActivity(new Intent(this, NavActivity.class));
         finish();
     }
 }
