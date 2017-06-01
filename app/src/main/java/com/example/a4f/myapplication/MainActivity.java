@@ -31,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
         //testDB();
     }
 
-    private static final String url = "jdbc:mysql://localhost:8080/test"; //test is name of your db
-    private static final String user = "root";
-    private static final String pass = "tina0907";
+    private static final String url = "http://timetable.dothome.co.kr/timetable"; //test is name of your db
+    private static final String user = "timetable";
+    private static final String pass = "twinkle13";
 
     public void testDB(){
 
