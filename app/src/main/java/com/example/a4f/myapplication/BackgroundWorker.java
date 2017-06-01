@@ -28,8 +28,10 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
 
     protected String doInBackground(String... params) {
         String type = params[0];
-        String loginUrl= "http://localhost:8080/login.php";
-        String regUrl = "http://localhost:8080/register.php";
+        String loginUrl= "http://timetable.dothome.co.kr/login.php";
+        String regUrl = "http://timetable.dothome.co.kr/register.php";
+        String editUrl = "http://timetable.dothome.co.kr/edit.php";
+
         if(type.equals("login")) {      // send login information (id, pw) to apache server to check if it is ok.
             try {
                 String user_name = params[1];
@@ -65,7 +67,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        } else if(type.equals("register")) {
+        }else if(type.equals("register")) {
             try {
                 String name = params[1];
                 String user_name = params[2];
@@ -106,12 +108,53 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }else if(type.equals("edit")) {
+            try {
+                String name = params[1];
+                String user_name = params[2];
+                String password = params[3];
+                String dept = params[4];
+                String grade = params[5];
+                URL url = new URL(editUrl);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+
+                //send register data to the apache.
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                String post_data = URLEncoder.encode("name", "UTF-8") + "=" + URLEncoder.encode(name, "UTF-8") + "&"
+                        + URLEncoder.encode("user_name", "UTF-8") + "=" + URLEncoder.encode(user_name, "UTF-8") + "&"
+                        + URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(password, "UTF-8") + "&"
+                        + URLEncoder.encode("dept", "UTF-8") + "=" + URLEncoder.encode(dept, "UTF-8") + "&"
+                        + URLEncoder.encode("grade", "UTF-8") + "=" + URLEncoder.encode(grade,"UTF-8");
+                bufferedWriter.write(post_data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+                String result = "";
+                String line = "";
+                while ((line = bufferedReader.readLine()) != null) {
+                    result += line;
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return result;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }else if(type.equals("course list")){
             try {
                 String credit = params[1];
                 String hour = params[2];
                 String dept = params[3];
-                String target="http://10.210.40.209/register.php?credit="+URLEncoder.encode(credit,"UTF-8")+
+                String target="http://timetable.dothome.co.kr/register.php?credit="+URLEncoder.encode(credit,"UTF-8")+
                         "&lectureTime="+URLEncoder.encode(hour,"UTF-8")+"&dept="+URLEncoder.encode(dept,"UTF-8");
                 URL url = new URL(regUrl);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();

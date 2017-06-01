@@ -81,7 +81,7 @@ public class MakeTTFragment extends Fragment {
                 RadioButton checkRB=(RadioButton)getView().findViewById(i);
                 String check=checkRB.getText().toString();
 
-                creditAdapter=ArrayAdapter.createFromResource(getActivity(),R.array.credit,android.R.layout.simple_spinner_dropdown_item);
+                creditAdapter=ArrayAdapter.createFromResource(getActivity(),R.array.credits,android.R.layout.simple_spinner_dropdown_item);
                 creditSpinner.setAdapter(creditAdapter);
 
                 hourAdapter=ArrayAdapter.createFromResource(getActivity(),R.array.hours,android.R.layout.simple_spinner_dropdown_item);
