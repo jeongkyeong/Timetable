@@ -22,6 +22,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URI;
 import java.net.URLEncoder;
+import java.lang.String;
 /**
  * Created by 상규 on 2017-05-27.
  */
