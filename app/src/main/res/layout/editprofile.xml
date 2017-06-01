@@ -9,16 +9,29 @@
     tools:layout_editor_absoluteX="0dp">
 
 
-
+    <EditText
+        android:id="@+id/etRegGrade"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="45dp"
+        android:ems="10"
+        android:hint="Current Grade"
+        android:inputType="textPersonName|numberDecimal"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="@+id/etRegPW2"
+        app:layout_constraintRight_toRightOf="@+id/etRegPW2"
+        app:layout_constraintTop_toBottomOf="@+id/etRegPW2"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1" />
 
     <Button
-        android:id="@+id/btnEdit"
+        android:id="@+id/btnJoin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="44dp"
         android:layout_marginRight="44dp"
-        android:text="Edit"
-        android:onClick="btnEditClick"
+        android:text="Join"
+        android:onClick="onReg"
 
         app:layout_constraintRight_toLeftOf="@+id/btnCancel"
         tools:layout_constraintBaseline_creator="1"
@@ -31,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cancel"
-        android:onClick="btnCancelClick"
+
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -92,13 +105,12 @@
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="@+id/etRegId" />
 
-
     <EditText
         android:id="@+id/etRegPW2"
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:ems="10"
-        android:hint = "Password Confirm"
+        android:hint = "Password confirm"
         android:inputType="textPassword"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
@@ -119,18 +131,8 @@
         app:layout_constraintRight_toRightOf="@+id/etRegPW2"
         app:layout_constraintTop_toBottomOf="@+id/etRegPW2"
         tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1" />
-
-    <Spinner
-        android:id="@+id/etRegGrade"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_marginTop="4dp"
-        android:entries="@array/grade"
-        android:visibility="visible"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="@+id/etRegDept"
-        app:layout_constraintRight_toRightOf="@+id/etRegDept"
-        app:layout_constraintTop_toBottomOf="@+id/etRegDept" />
+        tools:layout_constraintRight_creator="1"
+        android:layout_marginTop="-7dp"
+        app:layout_constraintHorizontal_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>

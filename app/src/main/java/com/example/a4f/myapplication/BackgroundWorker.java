@@ -28,8 +28,8 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
 
     protected String doInBackground(String... params) {
         String type = params[0];
-        String loginUrl= "http://10.210.40.209/login.php";
-        String regUrl = "http://10.210.40.209/register.php";
+        String loginUrl= "http://localhost:8080/login.php";
+        String regUrl = "http://localhost:8080/register.php";
         if(type.equals("login")) {      // send login information (id, pw) to apache server to check if it is ok.
             try {
                 String user_name = params[1];
@@ -71,6 +71,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 String user_name = params[2];
                 String password = params[3];
                 String dept = params[4];
+                String grade = params[5];
                 URL url = new URL(regUrl);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
@@ -83,7 +84,8 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 String post_data = URLEncoder.encode("name", "UTF-8") + "=" + URLEncoder.encode(name, "UTF-8") + "&"
                         + URLEncoder.encode("user_name", "UTF-8") + "=" + URLEncoder.encode(user_name, "UTF-8") + "&"
                         + URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(password, "UTF-8") + "&"
-                        + URLEncoder.encode("dept", "UTF-8") + "=" + URLEncoder.encode(dept, "UTF-8") ;
+                        + URLEncoder.encode("dept", "UTF-8") + "=" + URLEncoder.encode(dept, "UTF-8") + "&"
+                        + URLEncoder.encode("grade", "UTF-8") + "=" + URLEncoder.encode(grade,"UTF-8");
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
                 bufferedWriter.close();

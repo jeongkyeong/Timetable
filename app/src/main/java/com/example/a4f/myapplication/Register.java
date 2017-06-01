@@ -16,9 +16,8 @@ import java.util.Date;
  */
 //register
 public class Register extends AppCompatActivity {
-    EditText name,password,userName,dept;
-    Spinner grade;
-    String strName,strUN,strPW,strDept;
+    EditText name,password,userName,dept,grade;
+    String strName,strUN,strPW,strDept,strgrade;
     //
     @Override
     protected  void onCreate(Bundle savedInstance) {
@@ -28,7 +27,7 @@ public class Register extends AppCompatActivity {
         userName=(EditText)findViewById(R.id.etRegId);
         password = (EditText) findViewById(R.id.etRegPW);
         dept=(EditText)findViewById(R.id.etRegDept);
-        grade=(Spinner)findViewById(R.id.etRegGrade);
+        grade=(EditText)findViewById(R.id.etRegGrade);
         Button cancel;
         cancel = (Button)findViewById(R.id.btnCancel);
         cancel.setOnClickListener(new View.OnClickListener() {
@@ -47,9 +46,10 @@ public class Register extends AppCompatActivity {
         strUN = userName.getText().toString();
         strPW = password.getText().toString();
         strDept = dept.getText().toString();
+        strgrade = grade.getText().toString();
         String type="register";
         BackgroundWorker backgroundWorker=new BackgroundWorker(this);
-        backgroundWorker.execute(type,strName,strUN,strPW,strDept);
+        backgroundWorker.execute(type,strName,strUN,strPW,strDept,strgrade);
         Intent i= new Intent(Register.this,Register.class);
         startActivity(i);
         finish();

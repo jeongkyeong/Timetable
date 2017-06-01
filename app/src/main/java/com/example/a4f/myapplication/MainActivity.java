@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String url = "jdbc:mysql://localhost:8080/test"; //test is name of your db
     private static final String user = "root";
-    private static final String pass = "1234";
+    private static final String pass = "tina0907";
 
     public void testDB(){
 

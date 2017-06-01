@@ -13,9 +13,8 @@ import android.widget.Toast;
  */
 
 public class EditProfile extends AppCompatActivity {
-    EditText name,password,userName,dept;
-    Spinner grade;
-    String strName,strUN,strPW,strDept;
+    EditText name,password,userName,dept,grade;
+    String strName,strUN,strPW,strDept,strGrade;
 
 
     protected void onCreate(Bundle savedInstanceState) {
