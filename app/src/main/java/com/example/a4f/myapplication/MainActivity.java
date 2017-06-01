@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void testDB(){
 
-        TextView textView = (TextView)this.findViewById(R.id.textView3);
+     /*   TextView textView = (TextView)this.findViewById(R.id.textView);
         try{
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
@@ -52,14 +52,13 @@ public class MainActivity extends AppCompatActivity {
             while(resultSet.next()){
                 result += resultSetMetaData.getColumnName(1) + ":" + resultSet.getString(1) + "\n";
                 result += resultSetMetaData.getColumnName(2) + ":" + resultSet.getString(1) + "\n";
-
             }
             textView.setText(result);
 
         }catch (Exception e){
             e.printStackTrace();
             textView.setText(e.toString());
-        }
+        }*/
     }
 
 
