@@ -30,6 +30,11 @@ public class EditProfile extends AppCompatActivity {
     }
     public void btnEditClick(View view) {
         Toast.makeText(EditProfile.this, "Edit Clicked", Toast.LENGTH_SHORT).show();
+
+        ///edit background worker
+        Intent i = new Intent(EditProfile.this, MyAccount.class);
+        startActivity(i);
+
     }
     public void btnCancelClick(View view) {
         Toast.makeText(EditProfile.this, "Cancel Clicked", Toast.LENGTH_SHORT).show();
@@ -38,3 +43,4 @@ public class EditProfile extends AppCompatActivity {
     }
 
 }
+

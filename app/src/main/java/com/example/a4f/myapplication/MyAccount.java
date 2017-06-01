@@ -29,7 +29,7 @@ public class MyAccount extends AppCompatActivity {
 
     public void btnEditProfileClick(View view) {
         Toast.makeText(MyAccount.this, "Edit Profile Clicked", Toast.LENGTH_SHORT).show();
-        Intent i = new Intent(MyAccount.this, MyAccount.class);
+        Intent i = new Intent(MyAccount.this, EditProfile.class);
         startActivity(i);
         finish();
     }
