@@ -7,22 +7,23 @@ import java.io.*;
 import java.util.*;
 
 public class SubjectInfo{
-    String name;
-    String time; //강의시간
-    String day;  //요일
-    String hakjum;//학점
-    String grade; //학년
+    String name; //강의명
+    int time; //강의시간
+    String timePlace;  // 강의 요일, 장소
+    int credit;//학점
+    String dept; //학부
+    String professor;// 교수
 
     SubjectInfo() {
     }
 
-    SubjectInfo(String name, String time, String day, String hakjum,
-                String grade) {
+    SubjectInfo(String name, int time, String timePlace, int credit,String dept,String professor) {
         this.name = name;
         this.time = time;
-        this.day = day;
-        this.hakjum = hakjum;
-        this.grade = grade;
+        this.timePlace = timePlace;
+        this.credit = credit;
+        this.dept=dept;
+        this.professor = professor;
     }
 
     public static void Save(ArrayList<SubjectInfo> List)
@@ -31,8 +32,8 @@ public class SubjectInfo{
         int i;
         for (i = 0; i < List.size(); i++) {
             Save.println(List.get(i).name + "," + List.get(i).time + ","
-                    + List.get(i).day + "," + List.get(i).hakjum + ","
-                    + List.get(i).grade + ",");
+                    + List.get(i).timePlace + "," + List.get(i).credit + ","
+                    + List.get(i).professor + ",");
         }
         Save.close();
     }
@@ -53,18 +54,18 @@ public class SubjectInfo{
             Scanner scanner = new Scanner(str);
             Scanner extract = scanner.useDelimiter(",");
             List.add(new SubjectInfo());
-            for (i = 0; i < 5; i++) {
+            /*for (i = 0; i < 5; i++) {
                 if (i == 0)
                     List.get(point).name = extract.next();
                 else if (i == 1)
-                    List.get(point).time = extract.next();
+                    List.get(point).professor = extract.next();
                 else if (i == 2)
-                    List.get(point).day = extract.next();
+                    //List.get(point).day = extract.next();
                 else if (i == 3)
-                    List.get(point).hakjum = extract.next();
+                    //List.get(point).hakjum = extract.next();
                 else
-                    List.get(point).grade = extract.next();
-            }
+                    //List.get(point).grade = extract.next();
+            }*/
             point++;
             extract.close();
             scanner.close();

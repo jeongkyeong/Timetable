@@ -30,15 +30,13 @@
             android:name=".Register"
             android:label="Register">
         </activity>
-            .<activity
+        <activity
         android:name=".EntireTTActivity"
         android:label="MyTimetabe">
-
-    </activity>
+        </activity>
         <activity
             android:name=".MakeTTActivity"
             android:label="MakeTimetable">
-
         </activity>
         <activity
             android:name=".Option"

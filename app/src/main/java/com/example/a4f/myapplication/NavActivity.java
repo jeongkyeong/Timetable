@@ -81,6 +81,7 @@ public class NavActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         String title=getString(R.string.app_name);
+        Fragment frag=null;
         if (id == R.id.nav_account) {
             drawer.closeDrawer(GravityCompat.START);
             Intent i = new Intent(NavActivity.this, MyAccount.class);
@@ -90,9 +91,7 @@ public class NavActivity extends AppCompatActivity
             Intent i = new Intent(NavActivity.this, EntireTTActivity.class);
             startActivity(i);
         } else if (id == R.id.nav_make) {
-            drawer.closeDrawer(GravityCompat.START);
-            Intent i = new Intent(NavActivity.this, MakeTTActivity.class);
-            startActivity(i);
+            frag=new MakeTTFragment();
         } else if (id == R.id.nav_options) {
             drawer.closeDrawer(GravityCompat.START);
             Intent i = new Intent(NavActivity.this, Option.class);
@@ -106,7 +105,11 @@ public class NavActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_send) {
         }
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if(frag!=null) {
+            FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.content_frame,frag);
+            ft.commit();
+        }
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

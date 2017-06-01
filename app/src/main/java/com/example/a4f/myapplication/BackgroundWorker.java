@@ -106,6 +106,32 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }else if(type.equals("course list")){
+            try {
+                String credit = params[1];
+                String hour = params[2];
+                String dept = params[3];
+                String target="http://10.210.40.209/register.php?credit="+URLEncoder.encode(credit,"UTF-8")+
+                        "&lectureTime="+URLEncoder.encode(hour,"UTF-8")+"&dept="+URLEncoder.encode(dept,"UTF-8");
+                URL url = new URL(regUrl);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                String result = "";
+                String line = "";
+                StringBuilder stringBuilder=new StringBuilder();
+                while ((line = bufferedReader.readLine()) != null) {
+                    stringBuilder.append(line+"\n");
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return stringBuilder.toString().trim();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return null;
     }
@@ -118,8 +144,13 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
 
     @Override
     protected void onPostExecute(String result) {
-        alertDialog.setMessage(result);
-        alertDialog.show();
+        try{
+            //alertDialog=AlertDialog.Builder()
+
+            //alertDialog.show();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override

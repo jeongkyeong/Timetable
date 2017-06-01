@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="dept">
+        <item>경영학부(서울)</item>
+        <item>심리학과</item>
+        <item>사회복지학부</item>
+        <item>국어국문학과</item>
+        <item>영어영문학과</item>
+        <item>사회기반시스템공학부</item>
+        <item>건축학부</item>
+        <item>공공인재학부</item>
+        <item>수학과</item>
+        <item>컴퓨터공학부</item>
+    </string-array>
+    <string-array name="credit">
+        <item>1학점</item>
+        <item>2학점</item>
+        <item>3학점</item>
+    </string-array>
+    <string-array name="hours">
+        <item>1시간</item>
+        <item>2시간</item>
+        <item>3시간</item>
+    </string-array>
+</resources>
