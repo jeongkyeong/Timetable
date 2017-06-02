@@ -64,14 +64,13 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 bufferedWriter.close();
                 outputStream.close();
                 InputStream inputStream = httpURLConnection.getInputStream();
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"UTF-8"));
                 String data="";
                 String line="";
-                StringBuffer buffer = new StringBuffer();
                 while((line = bufferedReader.readLine())!= null) {
-                    buffer.append(line+"\n");
+                    if(line!=null)
+                        data+=line;
                 }
-                data = buffer.toString().trim();
                 if(data.equals("1")){
                    check = "1";
                 }
@@ -170,13 +169,8 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
 
     @Override
     protected void onPostExecute(String result) {
-        try{
-            //alertDialog=AlertDialog.Builder()
-
-            //alertDialog.show();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+        alertDialog.setMessage(result);
+        alertDialog.show();
     }
 
     @Override
