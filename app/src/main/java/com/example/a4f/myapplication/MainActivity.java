@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -34,10 +35,10 @@ public class MainActivity extends AppCompatActivity {
     private static final String url = "http://timetable.dothome.co.kr/timetable"; //test is name of your db
     private static final String user = "timetable";
     private static final String pass = "twinkle13";
-/*
+
     public void testDB(){
 
-        TextView textView = (TextView)this.findViewById(R.id.textView);
+        TextView textView = (TextView)this.findViewById(R.id.textView3);
         try{
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
             while(resultSet.next()){
                 result += resultSetMetaData.getColumnName(1) + ":" + resultSet.getString(1) + "\n";
                 result += resultSetMetaData.getColumnName(2) + ":" + resultSet.getString(1) + "\n";
+
             }
             textView.setText(result);
 
@@ -59,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
             textView.setText(e.toString());
         }
-    }*/
+    }
 
 
     public void openRegister(View v) {
@@ -67,13 +69,29 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    public void onLoginClick(View v,String data) {
+    public void onLoginClick(View v) {
+
         String username = userNameEt.getText().toString();
         String password = passwordEt.getText().toString();
         String type = "login";
-        BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-        backgroundWorker.execute(type, username, password);
-        startActivity(new Intent(this, NavActivity.class));
-        finish();
+
+        try {
+            BackgroundWorker backgroundWorker = new BackgroundWorker(this);
+            backgroundWorker.execute(type, username, password);
+
+            boolean checkk = (backgroundWorker.check).equals("1");
+
+            if (checkk){
+                Toast.makeText(MainActivity.this, "NOO", Toast.LENGTH_SHORT).show();
+            } else {
+
+                Intent i = new Intent(MainActivity.this, EntireTTActivity.class);
+                startActivity(i);
+                finish();
+            }
+        }catch(Exception e) {
+            e.printStackTrace();
+        };
+
     }
 }

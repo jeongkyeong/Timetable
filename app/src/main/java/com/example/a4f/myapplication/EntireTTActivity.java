@@ -1,417 +1,193 @@
 package com.example.a4f.myapplication;
+
+
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
+
 
 /**
- * Created by 태홍 on 2017-05-30.
+ * Created by jungyun on 02/06/2017.
  */
+
 public class EntireTTActivity extends AppCompatActivity {
-    static int colorflag = 1;
+
+    private static String TAG = "jsontest";
+
+    private static final String TAG_JSON="webnautes";
+    private static final String TAG_ID = "id";
+    private static final String TAG_NAME = "name";
+    private static final String TAG_ADDRESS ="address";
+
+    private TextView mTextViewResult;
+    ArrayList<HashMap<String, String>> mArrayList;
+    ListView mlistView;
+    String mJsonString;
+
+
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.entiretimetable);
+        setContentView(R.layout.layout_main);
 
+        mTextViewResult = (TextView)findViewById(R.id.textView_main_result);
+        mlistView = (ListView) findViewById(R.id.listView_main_list);
+        mArrayList = new ArrayList<>();
 
-    //}
-    //public void onClick10(View v) {
-        String a = "102관(102관(약학대학 및 R&D센터)) 505호 <강의실>(월4,5,6, 화4,5,6, 수4,5,6, 목4,5,6, 금4,5,6)";
-        String[] b = a.split("\\(");
-        String allDay = b[b.length-1];
-        //마지막 문자 제거
-        allDay = allDay.substring(0, allDay.length()-1);
-        String[] c = allDay.split(" ");
-        ArrayList<SubjectInfo> Info = new ArrayList<SubjectInfo>();
-        int col = 0;
-        col = choosecolor(col);
-        for (String aC : c)
-            FillTimetable(Info, aC, col);//c0] =월4,5,6, 화4,5,6, 수4,5,6, 목4,5,6, 금4,5,6
+        GetData task = new GetData();
+        task.execute("http://timetable.dothome.co.kr/getquery.php");
     }
-    protected int choosecolor(int col)
-    {
-        switch(colorflag)
-        {
-            case 1:
-                col = getResources().getColor(R.color.TT1);
-                break;
-            case 2:
-                col = getResources().getColor(R.color.TT2);
-                break;
-            case 3:
-                col = getResources().getColor(R.color.TT3);
-                break;
-            case 4:
-                col = getResources().getColor(R.color.TT4);
-                break;
-            case 5:
-                col = getResources().getColor(R.color.TT5);
-                break;
-            case 6:
-                col = getResources().getColor(R.color.TT6);
-                break;
-            case 7:
-                col = getResources().getColor(R.color.TT7);
-                break;
+
+
+    private class GetData extends AsyncTask<String, Void, String>{
+        ProgressDialog progressDialog;
+        String errorString = null;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            progressDialog = ProgressDialog.show(EntireTTActivity.this,
+                    "Please Wait", null, true, true);
         }
-        colorflag++;
-        return col;
-    }
-    protected void FillTimetable(ArrayList<SubjectInfo> Info,String A, int col) //테이블에 채우기
-    {
-        int nameflag = 1;
-        TextView TV;
-        String b;
-        b = A.substring(1,A.length());
-        String[] c = b.split(",");
-        for(int i=0;i<c.length;i++)
-        {
-            switch (Integer.parseInt(c[i]))
-            {
-                case 1:
-                if (A.substring(0, 1).equals("월")) {
-                    TV = (TextView) findViewById(R.id.mon1);
-                    if (nameflag == 0) {
-                        TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                        nameflag = 1;
-                    }
-                    TV.setBackgroundColor(col);
-                } else if (A.substring(0, 1).equals("화")) {
-                    TV = (TextView) findViewById(R.id.tue1);
-                    if (nameflag == 0) {
-                        TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                        nameflag = 1;
-                    }
-                    TV.setBackgroundColor(col);
-                } else if (A.substring(0, 1).equals("수")) {
-                    TV = (TextView) findViewById(R.id.wed1);
-                    if (nameflag == 0) {
-                        TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                        nameflag = 1;
-                    }
-                    TV.setBackgroundColor(col);
-                } else if (A.substring(0, 1).equals("목")) {
-                    TV = (TextView) findViewById(R.id.thu1);
-                    if (nameflag == 0) {
-                        TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                        nameflag = 1;
-                    }
-                    TV.setBackgroundColor(col);
-                } else if (A.substring(0, 1).equals("금")){
-                    TV = (TextView) findViewById(R.id.fri1);
-                    if (nameflag == 0) {
-                        TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                        nameflag = 1;
-                    }
-                    TV.setBackgroundColor(col);
-                }
-                break;
-                case 2:
-                    if (A.substring(0, 1).equals("월")) {
-                        TV = (TextView) findViewById(R.id.mon2);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                    } else if (A.substring(0, 1).equals("화")) {
-                        TV = (TextView) findViewById(R.id.tue2);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                    } else if (A.substring(0, 1).equals("수")) {
-                        TV = (TextView) findViewById(R.id.wed2);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                    } else if (A.substring(0, 1).equals("목")) {
-                        TV = (TextView) findViewById(R.id.thu2);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                    } else if (A.substring(0, 1).equals("금")){
-                    TV = (TextView) findViewById(R.id.fri2);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                }
-                break;
-                case 3:
-                    if (A.substring(0, 1).equals("월")) {
-                        TV = (TextView) findViewById(R.id.mon3);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                    } else if (A.substring(0, 1).equals("화")) {
-                        TV = (TextView) findViewById(R.id.tue3);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                    } else if (A.substring(0, 1).equals("수")) {
-                        TV = (TextView) findViewById(R.id.wed3);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                    } else if (A.substring(0, 1).equals("목")) {
-                        TV = (TextView) findViewById(R.id.thu3);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                    } else if (A.substring(0, 1).equals("금")){
-                    TV = (TextView) findViewById(R.id.fri3);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                }
-                break;
-                case 4:
-                    if (A.substring(0, 1).equals("월")) {
-                        TV = (TextView) findViewById(R.id.mon4);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                    } else if (A.substring(0, 1).equals("화")) {
-                        TV = (TextView) findViewById(R.id.tue4);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                    } else if (A.substring(0, 1).equals("수")) {
-                        TV = (TextView) findViewById(R.id.wed4);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                    } else if (A.substring(0, 1).equals("목")) {
-                        TV = (TextView) findViewById(R.id.thu4);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                    } else if (A.substring(0, 1).equals("금")){
-                    TV = (TextView) findViewById(R.id.fri4);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                }
-                break;
-                case 5:
-                    if (A.substring(0, 1).equals("월")) {
-                        TV = (TextView) findViewById(R.id.mon5);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                    } else if (A.substring(0, 1).equals("화")) {
-                        TV = (TextView) findViewById(R.id.tue5);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                    } else if (A.substring(0, 1).equals("수")) {
-                        TV = (TextView) findViewById(R.id.wed5);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                    } else if (A.substring(0, 1).equals("목")) {
-                        TV = (TextView) findViewById(R.id.thu5);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                    } else if (A.substring(0, 1).equals("금")){
-                    TV = (TextView) findViewById(R.id.fri5);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                }
-                break;
-                case 6:
-                    if (A.substring(0, 1).equals("월")) {
-                        TV = (TextView) findViewById(R.id.mon6);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                    } else if (A.substring(0, 1).equals("화")) {
-                        TV = (TextView) findViewById(R.id.tue6);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                    } else if (A.substring(0, 1).equals("수")) {
-                        TV = (TextView) findViewById(R.id.wed6);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                    } else if (A.substring(0, 1).equals("목")) {
-                        TV = (TextView) findViewById(R.id.thu6);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                    } else if (A.substring(0, 1).equals("금")){
-                    TV = (TextView) findViewById(R.id.fri6);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                }
-                break;
-                case 7:
-                    if (A.substring(0, 1).equals("월")) {
-                        TV = (TextView) findViewById(R.id.mon7);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                    } else if (A.substring(0, 1).equals("화")) {
-                        TV = (TextView) findViewById(R.id.tue7);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                    } else if (A.substring(0, 1).equals("수")) {
-                        TV = (TextView) findViewById(R.id.wed7);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                    } else if (A.substring(0, 1).equals("목")) {
-                        TV = (TextView) findViewById(R.id.thu7);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                    } else if (A.substring(0, 1).equals("금")){
-                    TV = (TextView) findViewById(R.id.fri7);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                }
-                break;
-                case 8:
-                    if (A.substring(0, 1).equals("월")) {
-                        TV = (TextView) findViewById(R.id.mon8);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                    } else if (A.substring(0, 1).equals("화")) {
-                        TV = (TextView) findViewById(R.id.tue8);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                    } else if (A.substring(0, 1).equals("수")) {
-                        TV = (TextView) findViewById(R.id.wed8);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                    } else if (A.substring(0, 1).equals("목")) {
-                        TV = (TextView) findViewById(R.id.thu8);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                    } else if (A.substring(0, 1).equals("금")){
-                    TV = (TextView) findViewById(R.id.fri8);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                }
-                break;
-                case 9:
-                    if (A.substring(0, 1).equals("월")) {
-                        TV = (TextView) findViewById(R.id.mon9);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                    } else if (A.substring(0, 1).equals("화")) {
-                        TV = (TextView) findViewById(R.id.tue9);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                    } else if (A.substring(0, 1).equals("수")) {
-                        TV = (TextView) findViewById(R.id.wed9);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                    } else if (A.substring(0, 1).equals("목")) {
-                        TV = (TextView) findViewById(R.id.thu9);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                    } else if (A.substring(0, 1).equals("금")){
-                    TV = (TextView) findViewById(R.id.fri9);
-                        if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
-                            nameflag = 1;
-                        }
-                        TV.setBackgroundColor(col);
-                }
-                break;
+
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            progressDialog.dismiss();
+            mTextViewResult.setText(result);
+            Log.d(TAG, "response  - " + result);
+
+            if (result == null){
+
+                mTextViewResult.setText(errorString);
+            }
+            else {
+
+                mJsonString = result;
+                showResult();
             }
         }
+
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            String serverURL = params[0];
+
+
+            try {
+
+                URL url = new URL(serverURL);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+
+
+                httpURLConnection.setReadTimeout(5000);
+                httpURLConnection.setConnectTimeout(5000);
+                httpURLConnection.connect();
+
+
+                int responseStatusCode = httpURLConnection.getResponseCode();
+                Log.d(TAG, "response code - " + responseStatusCode);
+
+                InputStream inputStream;
+                if(responseStatusCode == HttpURLConnection.HTTP_OK) {
+                    inputStream = httpURLConnection.getInputStream();
+                }
+                else{
+                    inputStream = httpURLConnection.getErrorStream();
+                }
+
+
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                StringBuilder sb = new StringBuilder();
+                String line;
+
+                while((line = bufferedReader.readLine()) != null){
+                    sb.append(line);
+                }
+
+
+                bufferedReader.close();
+
+
+                return sb.toString().trim();
+
+
+            } catch (Exception e) {
+
+                Log.d(TAG, "InsertData: Error ", e);
+                errorString = e.toString();
+
+                return null;
+            }
+
+        }
     }
+
+
+    private void showResult(){
+        try {
+            JSONObject jsonObject = new JSONObject(mJsonString);
+            JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
+
+            for(int i=0;i<jsonArray.length();i++){
+
+                JSONObject item = jsonArray.getJSONObject(i);
+
+                String id = item.getString(TAG_ID);
+                String name = item.getString(TAG_NAME);
+                String address = item.getString(TAG_ADDRESS);
+
+                HashMap<String,String> hashMap = new HashMap<>();
+
+                hashMap.put(TAG_ID, id);
+                hashMap.put(TAG_NAME, name);
+                hashMap.put(TAG_ADDRESS, address);
+
+                mArrayList.add(hashMap);
+            }
+
+            ListAdapter adapter = new SimpleAdapter(
+                    EntireTTActivity.this, mArrayList, R.layout.item_list,
+                    new String[]{TAG_ID,TAG_NAME, TAG_ADDRESS},
+                    new int[]{R.id.textView_list_id, R.id.textView_list_name, R.id.textView_list_address}
+            );
+
+            mlistView.setAdapter(adapter);
+
+        } catch (JSONException e) {
+
+            Log.d(TAG, "showResult : ", e);
+        }
+
+    }
+
 }
