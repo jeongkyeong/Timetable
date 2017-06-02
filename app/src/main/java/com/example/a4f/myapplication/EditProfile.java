@@ -52,12 +52,12 @@ public class EditProfile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.editmain);
 
         mTextViewResult = (TextView)findViewById(R.id.textView_main_result);
         mlistView = (ListView) findViewById(R.id.listView_main_list);
         mArrayList = new ArrayList<>();
-        String username = "jkjk";
+
         GetData task = new GetData();
         try {
             task.execute("http://timetable.dothome.co.kr/edit.php");
