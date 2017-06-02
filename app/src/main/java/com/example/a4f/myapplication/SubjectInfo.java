@@ -9,7 +9,7 @@ import java.util.*;
 public class SubjectInfo{
     String name; //강의명
     int time; //강의시간
-    String timePlace;  // 강의 요일, 장소
+    String Placetime;  // 강의 요일, 장소
     int credit;//학점
     String dept; //학부
     String professor;// 교수
@@ -17,10 +17,10 @@ public class SubjectInfo{
     SubjectInfo() {
     }
 
-    SubjectInfo(String name, int time, String timePlace, int credit,String dept,String professor) {
+    SubjectInfo(String name, int time, String Placetime, int credit,String dept,String professor) {
         this.name = name;
         this.time = time;
-        this.timePlace = timePlace;
+        this.Placetime = Placetime;
         this.credit = credit;
         this.dept=dept;
         this.professor = professor;
@@ -32,7 +32,7 @@ public class SubjectInfo{
         int i;
         for (i = 0; i < List.size(); i++) {
             Save.println(List.get(i).name + "," + List.get(i).time + ","
-                    + List.get(i).timePlace + "," + List.get(i).credit + ","
+                    + List.get(i).Placetime + "," + List.get(i).credit + ","
                     + List.get(i).professor + ",");
         }
         Save.close();

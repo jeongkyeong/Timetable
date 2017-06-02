@@ -117,6 +117,10 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }else if(type.equals("edit")) {
+           /////////////////////////////////
+
+
         }else if(type.equals("course list")){
             try {
                 String credit = params[1];

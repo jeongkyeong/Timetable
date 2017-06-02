@@ -34,10 +34,10 @@ public class MainActivity extends AppCompatActivity {
     private static final String url = "http://timetable.dothome.co.kr/timetable"; //test is name of your db
     private static final String user = "timetable";
     private static final String pass = "twinkle13";
-
+/*
     public void testDB(){
 
-        TextView textView = (TextView)this.findViewById(R.id.textView3);
+        TextView textView = (TextView)this.findViewById(R.id.textView);
         try{
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
             while(resultSet.next()){
                 result += resultSetMetaData.getColumnName(1) + ":" + resultSet.getString(1) + "\n";
                 result += resultSetMetaData.getColumnName(2) + ":" + resultSet.getString(1) + "\n";
-
             }
             textView.setText(result);
 
@@ -60,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
             textView.setText(e.toString());
         }
-    }
+    }*/
 
 
     public void openRegister(View v) {
