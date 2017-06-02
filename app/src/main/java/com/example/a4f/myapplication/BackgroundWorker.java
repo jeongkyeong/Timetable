@@ -32,6 +32,14 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
     Context context;
     AlertDialog alertDialog;
     String check="";
+    public static final String UTF8_BOM = "\uFEFF";
+
+    private static String removeUTF8BOM(String s) {
+        if (s.startsWith(UTF8_BOM)) {
+            s = s.substring(2);
+        }
+        return s;
+    }
     BackgroundWorker (Context ctx) {
         context = ctx;
     }
@@ -64,14 +72,15 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 bufferedWriter.close();
                 outputStream.close();
                 InputStream inputStream = httpURLConnection.getInputStream();
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"UTF-8"));
                 String data="";
                 String line="";
-                StringBuffer buffer = new StringBuffer();
+                String tset="";
+                tset+="1";
                 while((line = bufferedReader.readLine())!= null) {
-                    buffer.append(line+"\n");
+                    if(line!=null)
+                        data+=line;
                 }
-                data = buffer.toString().trim();
                 if(data.equals("1")){
                    check = "1";
                 }
@@ -170,13 +179,8 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
 
     @Override
     protected void onPostExecute(String result) {
-        try{
-            //alertDialog=AlertDialog.Builder()
-
-            //alertDialog.show();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+        alertDialog.setMessage(result);
+        alertDialog.show();
     }
 
     @Override
