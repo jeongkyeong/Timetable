@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "NOO", Toast.LENGTH_SHORT).show();
             } else {
 
-                Intent i = new Intent(MainActivity.this, layermain.class);
+                Intent i = new Intent(MainActivity.this, NavActivity.class);
                 startActivity(i);
                 finish();
             }
