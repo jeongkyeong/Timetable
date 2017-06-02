@@ -217,4 +217,11 @@ public class EditProfile extends AppCompatActivity {
 
     }
 
+    public void onBackPressed() {
+        Intent i = new Intent(EditProfile.this, MyAccount.class);
+        startActivity(i);
+        finish();
+
+    }
+
 }
