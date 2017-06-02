@@ -36,7 +36,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         String loginUrl= "http://timetable.dothome.co.kr/login.php";
         String regUrl = "http://timetable.dothome.co.kr/register.php";
         String editUrl = "http://timetable.dothome.co.kr/edit.php";
-
+        String timeTableUrl = "http://timetable.dothome.co.kr/timetable.php";
         if(type.equals("login")) {      // send login information (id, pw) to apache server to check if it is ok.
             try {
                 String user_name = params[1];
