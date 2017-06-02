@@ -3,6 +3,7 @@ package com.example.a4f.myapplication;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -30,6 +31,7 @@ import java.lang.String;
 public class BackgroundWorker extends AsyncTask<String,Void,String> {
     Context context;
     AlertDialog alertDialog;
+    String check="";
     BackgroundWorker (Context ctx) {
         context = ctx;
     }
@@ -45,6 +47,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
             try {
                 String user_name = params[1];
                 String password = params[2];
+
                 URL url = new URL(loginUrl);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
@@ -62,15 +65,23 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 outputStream.close();
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
-                String result="";
+                String data="";
                 String line="";
+                StringBuffer buffer = new StringBuffer();
                 while((line = bufferedReader.readLine())!= null) {
-                    result += line;
+                    buffer.append(line+"\n");
+                }
+                data = buffer.toString().trim();
+                if(data.equals("1")){
+                   check = "1";
+                }
+                else{
+                    check = "0";
                 }
                 bufferedReader.close();
                 inputStream.close();
                 httpURLConnection.disconnect();
-                return result;
+                return check;
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
