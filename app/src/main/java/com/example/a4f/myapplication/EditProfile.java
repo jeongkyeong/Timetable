@@ -1,17 +1,17 @@
 package com.example.a4f.myapplication;
 
+
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.app.ProgressDialog;
-import android.os.AsyncTask;
-import java.io.*;
 import android.util.Log;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import java.net.URLEncoder;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,57 +24,59 @@ import java.io.InputStreamReader;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
-import android.view.View;
-import android.widget.Toast;
+
 
 /**
- * Created by 강정경 on 2017-06-01.
+ * Created by jungyun on 02/06/2017.
  */
 
 public class EditProfile extends AppCompatActivity {
 
-    String username = "jkjk";/////////////////////?????현재사용자아이디
+    private static String TAG = "jsontest";
 
-    private static String TAG = "EditProfile";
-    private static String TAG_JSON = "webnautes";
-    private static final String TAG_username = "username";
-    private static final String TAG_name = "name";
-    private static final String TAG_password = "password";
-    private static final String TAG_dept = "dept";
-    private static final String TAG_grade = "grade";
-
+    private static final String TAG_JSON="user";
+    private static final String TAG_ID = "name";
+    private static final String TAG_NAME = "username";
+    private static final String TAG_ADDRESS ="password";
 
     private TextView mTextViewResult;
     ArrayList<HashMap<String, String>> mArrayList;
     ListView mlistView;
     String mJsonString;
 
+
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.editprofile);
+        setContentView(R.layout.activity_main);
+
+        mTextViewResult = (TextView)findViewById(R.id.textView_main_result);
+        mlistView = (ListView) findViewById(R.id.listView_main_list);
         mArrayList = new ArrayList<>();
+        String username = "jkjk";
+        GetData task = new GetData();
+        try {
+            task.execute("http://timetable.dothome.co.kr/edit.php");
+        }catch (Exception e){
 
-        try{
-            String editUrl = "http://timetable.dothome.co.kr/edit.php?username="+ URLEncoder.encode(username,"UTF-8");
-            GetData task = new GetData();
-            task.execute(editUrl);
         }
-         catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
     }
-    private class GetData extends AsyncTask<String,Void,String>{
+
+
+    private class GetData extends AsyncTask<String, Void, String>{
         ProgressDialog progressDialog;
         String errorString = null;
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
 
-            progressDialog = ProgressDialog.show(EditProfile.this, "Please Wait", null, true, true);
+            progressDialog = ProgressDialog.show(EditProfile.this,
+                    "Please Wait", null, true, true);
         }
 
 
@@ -101,11 +103,12 @@ public class EditProfile extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
 
-            String editUrl = params[0];
+            String serverURL = params[0];
+
 
             try {
 
-                URL url = new URL(editUrl);
+                URL url = new URL(serverURL);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
 
 
@@ -164,27 +167,23 @@ public class EditProfile extends AppCompatActivity {
 
                 JSONObject item = jsonArray.getJSONObject(i);
 
-                String username = item.getString(TAG_username);
-                String name = item.getString(TAG_name);
-                String password = item.getString(TAG_password);
-                String dept = item.getString(TAG_dept);
-                String grade = item.getString(TAG_grade);
+                String id = item.getString(TAG_ID);
+                String name = item.getString(TAG_NAME);
+                String address = item.getString(TAG_ADDRESS);
 
                 HashMap<String,String> hashMap = new HashMap<>();
 
-                hashMap.put(TAG_username, username);
-                hashMap.put(TAG_name, name);
-                hashMap.put(TAG_password, password);
-                hashMap.put(TAG_dept,dept);
-                hashMap.put(TAG_grade,grade);
+                hashMap.put(TAG_ID, id);
+                hashMap.put(TAG_NAME, name);
+                hashMap.put(TAG_ADDRESS, address);
 
                 mArrayList.add(hashMap);
             }
 
             ListAdapter adapter = new SimpleAdapter(
-                    EditProfile.this, mArrayList, R.layout.editmain,
-                    new String[]{TAG_name,TAG_username, TAG_password,TAG_dept,TAG_grade},
-                    new int[]{R.id.textView_list_name, R.id.textView_list_username, R.id.textView_list_password, R.id.textView_list_dept, R.id.textView_list_grade}
+                    EditProfile.this, mArrayList, R.layout.editprofile,
+                    new String[]{TAG_ID,TAG_NAME, TAG_ADDRESS},
+                    new int[]{R.id.textView_list_id, R.id.textView_list_name, R.id.textView_list_address}
             );
 
             mlistView.setAdapter(adapter);
@@ -194,29 +193,6 @@ public class EditProfile extends AppCompatActivity {
             Log.d(TAG, "showResult : ", e);
         }
 
-    }
-
-
-
-    @Override
-    public void onBackPressed() {
-        Intent i = new Intent(EditProfile.this, MyAccount.class);
-        startActivity(i);
-        finish();
-
-    }
-    public void btnEditClick(View view) {
-        Toast.makeText(EditProfile.this, "Edit Clicked", Toast.LENGTH_SHORT).show();
-
-                     ///edit background worker
-                            Intent i = new Intent(EditProfile.this, MyAccount.class);
-               startActivity(i);
-
-    }
-    public void btnCancelClick(View view) {
-        Toast.makeText(EditProfile.this, "Cancel Clicked", Toast.LENGTH_SHORT).show();
-        Intent i = new Intent(EditProfile.this, MyAccount.class);
-        startActivity(i);
     }
 
 }
