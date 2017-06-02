@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -34,15 +35,22 @@ import java.util.HashMap;
  */
 
 public class EditProfile extends AppCompatActivity {
+    public String getName;
+    public String getUsername;
+    public String getPassword;
+    public String getDept;
+    public String getGrade;
 
     private static String TAG = "jsontest";
 
     private static final String TAG_JSON="user";
-    private static final String TAG_ID = "name";
-    private static final String TAG_NAME = "username";
-    private static final String TAG_ADDRESS ="password";
+    private static final String TAG_NAME = "name";
+    private static final String TAG_USERNAME = "username";
+    private static final String TAG_PASSWORD ="password";
+    private static final String TAG_DEPT ="dept";
+    private static final String TAG_GRADE ="grade";
 
-    private TextView mTextViewResult;
+
     ArrayList<HashMap<String, String>> mArrayList;
     ListView mlistView;
     String mJsonString;
@@ -52,18 +60,22 @@ public class EditProfile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //setContentView(R.layout.edit);
         setContentView(R.layout.editmain);
 
-        mTextViewResult = (TextView)findViewById(R.id.textView_main_result);
+        //mTextViewResult = (TextView)findViewById(R.id.textView_main_result);
         mlistView = (ListView) findViewById(R.id.listView_main_list);
-        mArrayList = new ArrayList<>();
 
+        mArrayList = new ArrayList<>();
         GetData task = new GetData();
+
+        String username = "jkjk";
         try {
-            task.execute("http://timetable.dothome.co.kr/edit.php");
+            task.execute("http://timetable.dothome.co.kr/edit.php?username="+URLEncoder.encode(username,"UTF-8"));
         }catch (Exception e){
 
         }
+
     }
 
 
@@ -85,12 +97,12 @@ public class EditProfile extends AppCompatActivity {
             super.onPostExecute(result);
 
             progressDialog.dismiss();
-            mTextViewResult.setText(result);
+            //mTextViewResult.setText(result);
             Log.d(TAG, "response  - " + result);
 
             if (result == null){
 
-                mTextViewResult.setText(errorString);
+                //mTextViewResult.setText(errorString);
             }
             else {
 
@@ -167,23 +179,33 @@ public class EditProfile extends AppCompatActivity {
 
                 JSONObject item = jsonArray.getJSONObject(i);
 
-                String id = item.getString(TAG_ID);
                 String name = item.getString(TAG_NAME);
-                String address = item.getString(TAG_ADDRESS);
+                String username = item.getString(TAG_USERNAME);
+                String password = item.getString(TAG_PASSWORD);
+                String dept = item.getString(TAG_DEPT);
+                String grade = item.getString(TAG_GRADE);
+                getName = name;
+                getUsername = username;
+                getPassword = password;
+                getDept = dept;
+                getGrade = grade;
 
                 HashMap<String,String> hashMap = new HashMap<>();
 
-                hashMap.put(TAG_ID, id);
                 hashMap.put(TAG_NAME, name);
-                hashMap.put(TAG_ADDRESS, address);
+                hashMap.put(TAG_USERNAME, username);
+                hashMap.put(TAG_PASSWORD, password);
+                hashMap.put(TAG_DEPT, dept);
+                hashMap.put(TAG_GRADE, grade);
 
                 mArrayList.add(hashMap);
+
             }
 
             ListAdapter adapter = new SimpleAdapter(
                     EditProfile.this, mArrayList, R.layout.editprofile,
-                    new String[]{TAG_ID,TAG_NAME, TAG_ADDRESS},
-                    new int[]{R.id.textView_list_id, R.id.textView_list_name, R.id.textView_list_address}
+                    new String[]{TAG_NAME,TAG_USERNAME, TAG_PASSWORD,TAG_DEPT,TAG_GRADE},
+                    new int[]{R.id.textView_list_name, R.id.textView_list_username, R.id.textView_list_password, R.id.textView_list_dept ,R.id.textView_list_grade}
             );
 
             mlistView.setAdapter(adapter);
