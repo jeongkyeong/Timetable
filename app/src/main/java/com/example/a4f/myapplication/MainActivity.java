@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String user = "timetable";
     private static final String pass = "twinkle13";
 
-    public void testDB(){
+ /*   public void testDB(){
 
         TextView textView = (TextView)this.findViewById(R.id.textView3);
         try{
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
             textView.setText(e.toString());
         }
-    }
+    }*/
 
 
     public void openRegister(View v) {
