@@ -16,6 +16,7 @@ import android.view.MenuItem;
 public class NavActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawer;
+    public String username;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +24,8 @@ public class NavActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        Intent i=getIntent();
+        username = i.getStringExtra("username");
 /*
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +88,7 @@ public class NavActivity extends AppCompatActivity
         if (id == R.id.nav_account) {
             drawer.closeDrawer(GravityCompat.START);
             Intent i = new Intent(NavActivity.this, MyAccount.class);
+            i.putExtra("username",username);
             startActivity(i);
         } else if (id == R.id.nav_enter) {
             drawer.closeDrawer(GravityCompat.START);
