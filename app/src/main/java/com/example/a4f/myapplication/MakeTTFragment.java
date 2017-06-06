@@ -31,6 +31,7 @@ public class MakeTTFragment extends Fragment {
     private ListView courseListView;
     private CourseListAdapter courseAdapter;
     private List<MySubjectInfo> courseList;
+    static String check;
     public MakeTTFragment() {
         // Required empty public constructor
     }
@@ -90,7 +91,7 @@ public class MakeTTFragment extends Fragment {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 RadioButton checkRB=(RadioButton)getView().findViewById(i);
-                String check=checkRB.getText().toString();
+                check=checkRB.getText().toString();
 
                 creditAdapter=ArrayAdapter.createFromResource(getActivity(),R.array.credits,android.R.layout.simple_spinner_dropdown_item);
                 creditSpinner.setAdapter(creditAdapter);
@@ -127,6 +128,7 @@ public class MakeTTFragment extends Fragment {
                         String name; //강의명
                         String lectureTime; //강의시간
                         String placeTime;  // 강의 요일, 장소
+                        String subject;    // 전공인지 교양인지
                         String credit;//학점
                         String dept; //학부
                         String professor;// 교수
@@ -137,10 +139,11 @@ public class MakeTTFragment extends Fragment {
                             credit=object.getString("course_name");
                             name=object.getString("credit");
                             lectureTime=object.getString("lecture_time");
+                            subject=object.getString("subject");
                             dept=object.getString("department");
                             professor=object.getString("professor");
                             placeTime=object.getString("place_time");
-                            MySubjectInfo course=new MySubjectInfo(course_id, course_code,  name,  lectureTime,  placeTime,  credit, dept, professor);
+                            MySubjectInfo course=new MySubjectInfo(course_id, course_code,  name, credit, lectureTime, dept,subject, professor,placeTime);
                             courseList.add(course);
                             count++;
                         }

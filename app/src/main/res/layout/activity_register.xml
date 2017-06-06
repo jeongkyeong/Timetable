@@ -9,7 +9,7 @@
     tools:layout_editor_absoluteX="0dp">
 
 
-    <EditText
+    <Spinner
         android:id="@+id/etRegGrade"
         android:layout_width="0dp"
         android:layout_height="45dp"
@@ -22,7 +22,8 @@
         app:layout_constraintRight_toRightOf="@+id/etRegPW2"
         app:layout_constraintTop_toBottomOf="@+id/etRegPW2"
         tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1" />
+        tools:layout_constraintRight_creator="1"
+        android:entries="@array/grade"/>
 
     <Button
         android:id="@+id/btnJoin"
@@ -120,7 +121,7 @@
         app:layout_constraintLeft_toLeftOf="@+id/etRegPW"
         app:layout_constraintHorizontal_bias="0.0" />
 
-    <EditText
+    <Spinner
         android:id="@+id/etRegDept"
         android:layout_width="0dp"
         android:layout_height="45dp"
@@ -133,6 +134,7 @@
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
         android:layout_marginTop="-7dp"
-        app:layout_constraintHorizontal_bias="0.0" />
+        app:layout_constraintHorizontal_bias="0.0"
+        android:entries="@array/dept"/>
 
 </android.support.constraint.ConstraintLayout>
