@@ -3,19 +3,6 @@
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <Button
-        android:layout_width="80dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="추가"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="#ffffff"
-        android:textSize="18dp"
-        android:id="@+id/addBtn"
-        android:layout_marginRight="8dp"
-        android:layout_marginLeft="8dp"/>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,12 +23,12 @@
                  android:textColor="#ffffff" />
 
              <TextView
+                 android:id="@+id/courseTitle"
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
-                 android:text="Title :"
-                 android:id="@+id/courseTitle"
                  android:layout_gravity="center"
                  android:padding="3dp"
+                 android:text="Course :"
                  android:textColor="#ffffff" />
 
          </LinearLayout>

@@ -136,6 +136,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 String credit = params[1].substring(0,1);
                 String hour = params[2].substring(0,1);
                 String dept = params[3];
+
                 String target="http://timetable.dothome.co.kr/courseList.php?credit="+URLEncoder.encode(credit,"UTF-8")+
                         "&lectureTime="+URLEncoder.encode(hour,"UTF-8")+"&dept="+URLEncoder.encode(dept,"UTF-8");
                 URL url = new URL(target);
