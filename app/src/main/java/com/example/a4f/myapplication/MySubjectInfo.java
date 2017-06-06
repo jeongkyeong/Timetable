@@ -6,7 +6,7 @@ import android.database.Cursor;
  * Created by cxz13 on 2017-06-02.
  */
 
-public class MySubjectInfo {
+public class MySubjectInfo {                // 내가 저장한 강의들을 저장하는 ArrayList
 
     String course_id;
     String course_code;
@@ -14,21 +14,23 @@ public class MySubjectInfo {
     String lectureTime; //강의시간
     String placeTime;  // 강의 요일, 장소
     String credit;//학점
+    String subject;//전공인지 교양인지
     String dept; //학부
     String professor;// 교수
 
     MySubjectInfo() {
     }
 
-    MySubjectInfo(String course_id, String course_code, String name, String time, String Placetime, String credit,String dept,String professor) {
+    MySubjectInfo(String course_id,String course_code,String  name,String credit,String lectureTime,String dept,String subject,String professor,String placeTime) {
         this.course_id = course_id;
         this.course_code = course_code;
         this.name = name;
         this.credit = credit;
-        this.lectureTime = time   ;
+        this.subject = subject;
+        this.lectureTime = lectureTime   ;
         this.dept= dept;
         this.professor =professor;
-        this.placeTime = Placetime;
+        this.placeTime = placeTime;
     }
 
     public MySubjectInfo(Cursor cursor){
@@ -38,7 +40,8 @@ public class MySubjectInfo {
         credit = cursor.getString(3);
         lectureTime = cursor.getString(4);
         dept= cursor.getString(5);
-        professor = cursor.getString(6);
-        placeTime = cursor.getString(7);
+        subject= cursor.getString(6);
+        professor = cursor.getString(7);
+        placeTime = cursor.getString(8);
     }
 }

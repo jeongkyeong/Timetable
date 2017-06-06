@@ -11,6 +11,7 @@
         <item>공공인재학부</item>
         <item>수학과</item>
         <item>컴퓨터공학부</item>
+        <item></item>
     </string-array>
     <string-array name="credits">
         <item>1학점</item>
@@ -21,5 +22,11 @@
         <item>1시간</item>
         <item>2시간</item>
         <item>3시간</item>
+    </string-array>
+    <string-array name="Grade">
+        <item>1학년</item>
+        <item>2학년</item>
+        <item>3학년</item>
+        <item>4학년</item>
     </string-array>
 </resources>

@@ -18,11 +18,12 @@ public class SubjectDBHelper extends SQLiteOpenHelper {
             + DBTable.SubjectInfoTable.SUBJECT_ID + " int primary key, "
             + DBTable.SubjectInfoTable.SUBJECT_CODE + " int, "
             + DBTable.SubjectInfoTable.SUBJECT_NAME + " text, "
-            + DBTable.SubjectInfoTable.SUBJECT_TIME + " int, "
-            + DBTable.SubjectInfoTable.SUBJECT_PLACETIME + "text , "
             + DBTable.SubjectInfoTable.SUBJECT_CREDIT + " int, "
+            + DBTable.SubjectInfoTable.SUBJECT_TIME + " int, "
             + DBTable.SubjectInfoTable.SUBJECT_DEPT + " text, "
-            + DBTable.SubjectInfoTable.SUBJECT_PROFESSOR + " text ); ";
+            + DBTable.SubjectInfoTable.SUBJECT_SUBJECT + " text, "
+            + DBTable.SubjectInfoTable.SUBJECT_PROFESSOR + "text , "
+            + DBTable.SubjectInfoTable.SUBJECT_PLACETIME + " text ); ";
 
     public SubjectDBHelper(Context context){
         super(context,DATABASE_NAME,null,DATABASE_VERSION);

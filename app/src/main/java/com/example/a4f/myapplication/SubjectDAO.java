@@ -31,8 +31,8 @@ public class SubjectDAO {
         SubjectDBHelper dbHelper = new SubjectDBHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.execSQL("insert into " + DBTable.SubjectInfoTable.TABLE_NAME +
-                " values (" + subjectInfo.course_id+ ", " + subjectInfo.course_code +", '" + subjectInfo.name + "', " + subjectInfo.lectureTime +", '"
-                +subjectInfo.placeTime +"', "+subjectInfo.credit+", '"+subjectInfo.dept+"', '"+subjectInfo.professor+ "');");
+                " values (" + subjectInfo.course_id+ ", " + subjectInfo.course_code +", '" + subjectInfo.name + "', " +subjectInfo.credit+", '"+ subjectInfo.lectureTime +", '"
+                 +subjectInfo.dept+"', '"+subjectInfo.professor+"', "+subjectInfo.placeTime+ "');");
     }
 
     public static void deleteItemInfo(Context context, MySubjectInfo subjectInfo){

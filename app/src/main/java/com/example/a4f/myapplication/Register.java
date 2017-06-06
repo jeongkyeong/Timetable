@@ -16,8 +16,10 @@ import java.util.Date;
  */
 //register
 public class Register extends AppCompatActivity {
-    EditText name,password,userName,dept,grade;
+    EditText name,password,userName;
     String strName,strUN,strPW,strDept,strgrade;
+    private Spinner deptSpinner;
+    private Spinner gradeSpinner;
     //
     @Override
     protected  void onCreate(Bundle savedInstance) {
@@ -26,8 +28,8 @@ public class Register extends AppCompatActivity {
         name=(EditText)findViewById(R.id.etRegName);
         userName=(EditText)findViewById(R.id.etRegId);
         password = (EditText) findViewById(R.id.etRegPW);
-        dept=(EditText)findViewById(R.id.etRegDept);
-        grade=(EditText)findViewById(R.id.etRegGrade);
+        deptSpinner=(Spinner)findViewById(R.id.etRegDept);
+        gradeSpinner=(Spinner)findViewById(R.id.etRegGrade);
         Button cancel;
         cancel = (Button)findViewById(R.id.btnCancel);
         cancel.setOnClickListener(new View.OnClickListener() {
@@ -45,8 +47,8 @@ public class Register extends AppCompatActivity {
         strName=name.getText().toString();
         strUN = userName.getText().toString();
         strPW = password.getText().toString();
-        strDept = dept.getText().toString();
-        strgrade = grade.getText().toString();
+        strDept=deptSpinner.getSelectedItem().toString();
+        strgrade=gradeSpinner.getSelectedItem().toString();
         String type="register";
         BackgroundWorker backgroundWorker=new BackgroundWorker(this);
         backgroundWorker.execute(type,strName,strUN,strPW,strDept,strgrade);
