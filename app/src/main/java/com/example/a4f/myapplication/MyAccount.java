@@ -15,10 +15,12 @@ public class MyAccount extends AppCompatActivity {
     EditText name,password,userName,dept;
     Spinner grade;
     String strName,strUN,strPW,strDept;
-
+    private String username;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.myaccount);
+        Intent i =getIntent();
+        username=i.getStringExtra("username");
     }
 
     @Override
@@ -30,6 +32,7 @@ public class MyAccount extends AppCompatActivity {
     public void btnEditProfileClick(View view) {
         Toast.makeText(MyAccount.this, "Edit Profile Clicked", Toast.LENGTH_SHORT).show();
         Intent i = new Intent(MyAccount.this, EditProfile.class);
+        i.putExtra("username",username);
         startActivity(i);
         finish();
     }

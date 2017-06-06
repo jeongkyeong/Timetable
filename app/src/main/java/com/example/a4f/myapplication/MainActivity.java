@@ -1,5 +1,6 @@
 package com.example.a4f.myapplication;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -22,6 +23,8 @@ import java.sql.Statement;
 public class MainActivity extends AppCompatActivity {
     //EditText userNameEt, passwordEt;
     TextView userNameEt,passwordEt;
+    private AlertDialog dialog;
+    String accoutID;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -36,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String user = "timetable";
     private static final String pass = "twinkle13";
 
-    public void testDB(){
+ /*   public void testDB(){
 
         TextView textView = (TextView)this.findViewById(R.id.textView3);
         try{
@@ -61,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
             textView.setText(e.toString());
         }
-    }
+    }*/
 
 
     public void openRegister(View v) {
@@ -77,17 +80,26 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-            backgroundWorker.execute(type, username, password);
+            String result=backgroundWorker.execute(type, username, password).get();
 
-            boolean checkk = (backgroundWorker.check).equals("1");
+            boolean checkk=result.equals("1");
 
-            if (checkk){
-                Toast.makeText(MainActivity.this, "NOO", Toast.LENGTH_SHORT).show();
-            } else {
-
+            if ( checkk){
+                AlertDialog.Builder builder= new AlertDialog.Builder(MainActivity.this);
+                dialog = builder.setMessage("Success Login!")
+                        .setPositiveButton("OK", null)
+                        .create();
+                dialog.show();
+                accoutID=username;
                 Intent i = new Intent(MainActivity.this, NavActivity.class);
+                i.putExtra("username",username);
                 startActivity(i);
-                finish();
+            } else {
+                AlertDialog.Builder builder= new AlertDialog.Builder(MainActivity.this);
+                dialog = builder.setMessage("Check your ID or Password. ")
+                        .setPositiveButton("OK", null)
+                        .create();
+                dialog.show();
             }
         }catch(Exception e) {
             e.printStackTrace();

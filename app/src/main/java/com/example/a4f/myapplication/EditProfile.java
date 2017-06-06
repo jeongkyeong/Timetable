@@ -42,7 +42,7 @@ public class EditProfile extends AppCompatActivity {
     public String getGrade;
 
     private static String TAG = "jsontest";
-
+    private String username;
     private static final String TAG_JSON="user";
     private static final String TAG_NAME = "name";
     private static final String TAG_USERNAME = "username";
@@ -68,8 +68,8 @@ public class EditProfile extends AppCompatActivity {
 
         mArrayList = new ArrayList<>();
         GetData task = new GetData();
-
-        String username = "jkjk";
+        Intent i =getIntent();
+        username=i.getStringExtra("username");
         try {
             task.execute("http://timetable.dothome.co.kr/edit.php?username="+URLEncoder.encode(username,"UTF-8"));
         }catch (Exception e){
