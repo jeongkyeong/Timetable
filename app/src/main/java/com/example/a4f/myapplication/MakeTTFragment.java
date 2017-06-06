@@ -84,7 +84,7 @@ public class MakeTTFragment extends Fragment {
         hourSpinner=(Spinner)getView().findViewById(R.id.spinnerHour);
         deptSpinner=(Spinner)getView().findViewById(R.id.spinnerDept);
 
-        final RadioGroup checkCourseType=(RadioGroup)getView().findViewById(R.id.courseCheckGruop);
+        final RadioGroup checkCourseType=(RadioGroup)getView().findViewById(R.id.courseCheckGroup);
 
         checkCourseType.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
