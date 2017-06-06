@@ -30,7 +30,7 @@ public class MakeTTFragment extends Fragment {
     private String mParam2;
     private ListView courseListView;
     private CourseListAdapter courseAdapter;
-    private List<MySubjectInfo> courseList;
+    private List<SubjectInfo> courseList;
     static String check;
     public MakeTTFragment() {
         // Required empty public constructor
@@ -105,7 +105,7 @@ public class MakeTTFragment extends Fragment {
         });
 
         courseListView=(ListView)getView().findViewById(R.id.courseList);
-        courseList=new ArrayList<MySubjectInfo>();      //과목정보 담을 ArrayList생성.
+        courseList=new ArrayList<SubjectInfo>();      //과목정보 담을 ArrayList생성.
 
         Button searchBtn = (Button) getView().findViewById(R.id.searchBtn);
         searchBtn.setOnClickListener(new View.OnClickListener(){    //search버튼 클릭시.
@@ -143,7 +143,7 @@ public class MakeTTFragment extends Fragment {
                             dept=object.getString("department");
                             professor=object.getString("professor");
                             placeTime=object.getString("place_time");
-                            MySubjectInfo course=new MySubjectInfo(course_id, course_code,  name, credit, lectureTime, dept,subject, professor,placeTime);
+                            SubjectInfo course=new SubjectInfo(course_id, course_code,  name, credit, lectureTime, dept,subject, professor,placeTime);
                             courseList.add(course);
                             count++;
                         }
