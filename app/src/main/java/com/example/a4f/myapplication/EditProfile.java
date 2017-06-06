@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -61,17 +62,17 @@ public class EditProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.edit);
-        setContentView(R.layout.editmain);
+        setContentView(R.layout.profile);
 
         //mTextViewResult = (TextView)findViewById(R.id.textView_main_result);
-        mlistView = (ListView) findViewById(R.id.listView_main_list);
+        //mlistView = (ListView) findViewById(R.id.listView_main_list);
 
         mArrayList = new ArrayList<>();
         GetData task = new GetData();
         Intent i =getIntent();
         username=i.getStringExtra("username");
         try {
-            task.execute("http://timetable.dothome.co.kr/edit.php?username="+URLEncoder.encode(username,"UTF-8"));
+            task.execute("http://timetable.dothome.co.kr/getUser.php?username="+URLEncoder.encode(username,"UTF-8"));
         }catch (Exception e){
 
         }
@@ -190,6 +191,8 @@ public class EditProfile extends AppCompatActivity {
                 getDept = dept;
                 getGrade = grade;
 
+
+/*
                 HashMap<String,String> hashMap = new HashMap<>();
 
                 hashMap.put(TAG_NAME, name);
@@ -199,9 +202,9 @@ public class EditProfile extends AppCompatActivity {
                 hashMap.put(TAG_GRADE, grade);
 
                 mArrayList.add(hashMap);
-
+*/
             }
-
+/*
             ListAdapter adapter = new SimpleAdapter(
                     EditProfile.this, mArrayList, R.layout.editprofile,
                     new String[]{TAG_NAME,TAG_USERNAME, TAG_PASSWORD,TAG_DEPT,TAG_GRADE},
@@ -209,16 +212,62 @@ public class EditProfile extends AppCompatActivity {
             );
 
             mlistView.setAdapter(adapter);
-
+*/
         } catch (JSONException e) {
 
             Log.d(TAG, "showResult : ", e);
         }
-
+        profileInfo();
     }
 
+
+    private void profileInfo(){
+
+
+        EditText eName = (EditText)findViewById(R.id.etName);
+        eName.setHint(getName);
+        EditText eID = (EditText)findViewById(R.id.etId);
+        eID.setHint(getUsername);
+        EditText ePW = (EditText)findViewById(R.id.etPW);
+        ePW.setHint("");
+        EditText ePW2 = (EditText)findViewById(R.id.etPW2);
+        ePW2.setHint("");
+        EditText eDept = (EditText)findViewById(R.id.etDept);
+        eDept.setHint(getDept);
+        EditText eGrade = (EditText)findViewById(R.id.etGrade);
+        eGrade.setHint(getGrade);
+
+    }
+    public void onEdit(View view){
+        EditText name,password,userName,dept,grade;
+        String strName=getName;
+        String strUN=getUsername;
+        String strPW=getPassword;
+        String strDept=getDept;
+        String strgrade=getGrade;
+
+        name=(EditText)findViewById(R.id.etName);
+        userName=(EditText)findViewById(R.id.etId);
+        password = (EditText) findViewById(R.id.etPW);
+        dept=(EditText)findViewById(R.id.etDept);
+        grade=(EditText)findViewById(R.id.etGrade);
+        if(name.getText().length()!=0){strName=name.getText().toString();}
+        if(userName.getText().length()!=0){strUN = userName.getText().toString();}
+        if(password.getText().length()!=0){strPW = password.getText().toString();}
+        if(dept.getText().length()!=0){strDept = dept.getText().toString();}
+        if(grade.getText().length()!=0){strgrade = grade.getText().toString();}
+
+
+        String type="edit";
+        BackgroundWorker backgroundWorker=new BackgroundWorker(this);
+        backgroundWorker.execute(type,strName,strUN,strPW,strDept,strgrade);
+        Intent i= new Intent(EditProfile.this,MyAccount.class);
+        startActivity(i);
+        finish();
+
+    }
     public void onBackPressed() {
-        Intent i = new Intent(EditProfile.this, MyAccount.class);
+        Intent i = new Intent(EditProfile.this, MainActivity.class);
         startActivity(i);
         finish();
 
