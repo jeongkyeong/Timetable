@@ -6,8 +6,6 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 
-import javax.security.auth.Subject;
-
 /**
  * Created by cxz13 on 2017-06-02.
  */
@@ -33,8 +31,8 @@ public class SubjectDAO {
         SubjectDBHelper dbHelper = new SubjectDBHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.execSQL("insert into " + DBTable.SubjectInfoTable.TABLE_NAME +
-                " values (" + subjectInfo.course_id+ ", " + subjectInfo.course_code +", '" + subjectInfo.name + "', " + subjectInfo.time +", '"
-                +subjectInfo.Placetime+"', "+subjectInfo.credit+", '"+subjectInfo.dept+"', '"+subjectInfo.professor+ "');");
+                " values (" + subjectInfo.course_id+ ", " + subjectInfo.course_code +", '" + subjectInfo.name + "', " + subjectInfo.lectureTime +", '"
+                +subjectInfo.placeTime +"', "+subjectInfo.credit+", '"+subjectInfo.dept+"', '"+subjectInfo.professor+ "');");
     }
 
     public static void deleteItemInfo(Context context, MySubjectInfo subjectInfo){

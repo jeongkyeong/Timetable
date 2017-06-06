@@ -133,12 +133,12 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
 
         }else if(type.equals("course list")){
             try {
-                String credit = params[1];
-                String hour = params[2];
+                String credit = params[1].substring(0,1);
+                String hour = params[2].substring(0,1);
                 String dept = params[3];
-                String target="http://timetable.dothome.co.kr/register.php?credit="+URLEncoder.encode(credit,"UTF-8")+
+                String target="http://timetable.dothome.co.kr/courseList.php?credit="+URLEncoder.encode(credit,"UTF-8")+
                         "&lectureTime="+URLEncoder.encode(hour,"UTF-8")+"&dept="+URLEncoder.encode(dept,"UTF-8");
-                URL url = new URL(regUrl);
+                URL url = new URL(target);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
@@ -148,6 +148,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 while ((line = bufferedReader.readLine()) != null) {
                     stringBuilder.append(line+"\n");
                 }
+
                 bufferedReader.close();
                 inputStream.close();
                 httpURLConnection.disconnect();
@@ -169,6 +170,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
 
     @Override
     protected void onPostExecute(String result) {
+
         //alertDialog.setMessage(result);
         //alertDialog.show();
     }
