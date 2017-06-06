@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -13,10 +14,10 @@
         android:id="@+id/etRegGrade"
         android:layout_width="0dp"
         android:layout_height="45dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="84dp"
         android:ems="10"
         android:hint="Current Grade"
-        android:inputType="textPersonName|numberDecimal"
+        android:inputType="numberDecimal"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="@+id/etRegPW2"
         app:layout_constraintRight_toRightOf="@+id/etRegPW2"
@@ -127,14 +128,33 @@
         android:layout_height="45dp"
         android:ems="10"
         android:hint="Department"
-        android:inputType="textPersonName"
         app:layout_constraintLeft_toLeftOf="@+id/etRegPW2"
         app:layout_constraintRight_toRightOf="@+id/etRegPW2"
         app:layout_constraintTop_toBottomOf="@+id/etRegPW2"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
-        android:layout_marginTop="-7dp"
+        android:layout_marginTop="21dp"
         app:layout_constraintHorizontal_bias="0.0"
         android:entries="@array/dept"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Grade"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/etRegGrade"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/etRegGrade" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Department"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/etRegDept"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/etRegDept" />
 
 </android.support.constraint.ConstraintLayout>

@@ -24,45 +24,49 @@
             android:id="@+id/majorRB"/>
 
     </RadioGroup>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="10dp"
+        android:layout_height="57dp"
         android:layout_gravity="center"
+        android:layout_margin="10dp"
         android:gravity="center"
-        android:paddingRight="10dp"
-        >
+        android:orientation="horizontal"
+        android:paddingRight="10dp">
+
         <Spinner
             android:id="@+id/spinnerCredits"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp" />
+
         <Spinner
             android:id="@+id/spinnerHour"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp" />
+
         <Spinner
             android:id="@+id/spinnerDept"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp" />
+
         <Button
+            android:id="@+id/searchBtn"
             android:layout_width="60dp"
             android:layout_height="40dp"
-            android:textSize="13sp"
-            android:textColor="#ffffff"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
             android:background="@color/colorPrimaryDark"
             android:text="Search"
-            android:layout_gravity="center"
-            android:id="@+id/searchBtn"
-            android:layout_margin="10dp"
-            />
+            android:textColor="#ffffff"
+            android:textSize="13sp" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

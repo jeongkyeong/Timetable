@@ -22,10 +22,10 @@
     <string name="action_settings">Settings</string>
 
      <string-array name="grade"> 
-    <item >Grade 1</item> 
-    <item >Grade 2</item> 
-    <item >Grade 3</item> 
-    <item >Grade 4</item> 
+    <item >1</item> 
+    <item >2</item> 
+    <item >3</item> 
+    <item >4</item> 
      </string-array>
 
      <string-array name="credit"> 
@@ -49,5 +49,6 @@
     <item >No</item> 
      </string-array>
 
+    <string name = "dept">Department</string>
 
 </resources>
