@@ -6,7 +6,7 @@ import android.database.Cursor;
  * Created by cxz13 on 2017-06-02.
  */
 
-public class MySubjectInfo {
+public class MySubjectInfo {                // 내가 저장한 강의들을 저장하는 ArrayList
 
     String course_id;
     String course_code;

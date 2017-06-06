@@ -27,7 +27,7 @@ public class EntireTTActivity extends AppCompatActivity {
         int col = 0;
         col = choosecolor(col);
         for (String aC : c)
-            FillTimetable(Info, aC, col);//c0] =월4,5,6, 화4,5,6, 수4,5,6, 목4,5,6, 금4,5,6
+            FilllectureTimetable(Info, aC, col);//c0] =월4,5,6, 화4,5,6, 수4,5,6, 목4,5,6, 금4,5,6
     }
     protected int choosecolor(int col)
     {
@@ -58,7 +58,7 @@ public class EntireTTActivity extends AppCompatActivity {
         colorflag++;
         return col;
     }
-    protected void FillTimetable(ArrayList<SubjectInfo> Info,String A, int col) //테이블에 채우기
+    protected void FilllectureTimetable(ArrayList<SubjectInfo> Info,String A, int col) //테이블에 채우기
     {
         int nameflag = 1;
         TextView TV;
@@ -73,35 +73,35 @@ public class EntireTTActivity extends AppCompatActivity {
                     if (A.substring(0, 1).equals("월")) {
                         TV = (TextView) findViewById(R.id.mon1);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("화")) {
                         TV = (TextView) findViewById(R.id.tue1);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("수")) {
                         TV = (TextView) findViewById(R.id.wed1);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("목")) {
                         TV = (TextView) findViewById(R.id.thu1);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("금")){
                         TV = (TextView) findViewById(R.id.fri1);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
@@ -111,35 +111,35 @@ public class EntireTTActivity extends AppCompatActivity {
                     if (A.substring(0, 1).equals("월")) {
                         TV = (TextView) findViewById(R.id.mon2);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("화")) {
                         TV = (TextView) findViewById(R.id.tue2);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("수")) {
                         TV = (TextView) findViewById(R.id.wed2);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("목")) {
                         TV = (TextView) findViewById(R.id.thu2);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("금")){
                         TV = (TextView) findViewById(R.id.fri2);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
@@ -149,35 +149,35 @@ public class EntireTTActivity extends AppCompatActivity {
                     if (A.substring(0, 1).equals("월")) {
                         TV = (TextView) findViewById(R.id.mon3);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("화")) {
                         TV = (TextView) findViewById(R.id.tue3);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("수")) {
                         TV = (TextView) findViewById(R.id.wed3);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("목")) {
                         TV = (TextView) findViewById(R.id.thu3);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("금")){
                         TV = (TextView) findViewById(R.id.fri3);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
@@ -187,35 +187,35 @@ public class EntireTTActivity extends AppCompatActivity {
                     if (A.substring(0, 1).equals("월")) {
                         TV = (TextView) findViewById(R.id.mon4);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("화")) {
                         TV = (TextView) findViewById(R.id.tue4);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("수")) {
                         TV = (TextView) findViewById(R.id.wed4);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("목")) {
                         TV = (TextView) findViewById(R.id.thu4);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("금")){
                         TV = (TextView) findViewById(R.id.fri4);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
@@ -225,35 +225,35 @@ public class EntireTTActivity extends AppCompatActivity {
                     if (A.substring(0, 1).equals("월")) {
                         TV = (TextView) findViewById(R.id.mon5);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("화")) {
                         TV = (TextView) findViewById(R.id.tue5);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("수")) {
                         TV = (TextView) findViewById(R.id.wed5);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("목")) {
                         TV = (TextView) findViewById(R.id.thu5);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("금")){
                         TV = (TextView) findViewById(R.id.fri5);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
@@ -263,35 +263,35 @@ public class EntireTTActivity extends AppCompatActivity {
                     if (A.substring(0, 1).equals("월")) {
                         TV = (TextView) findViewById(R.id.mon6);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("화")) {
                         TV = (TextView) findViewById(R.id.tue6);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("수")) {
                         TV = (TextView) findViewById(R.id.wed6);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("목")) {
                         TV = (TextView) findViewById(R.id.thu6);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("금")){
                         TV = (TextView) findViewById(R.id.fri6);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
@@ -301,35 +301,35 @@ public class EntireTTActivity extends AppCompatActivity {
                     if (A.substring(0, 1).equals("월")) {
                         TV = (TextView) findViewById(R.id.mon7);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("화")) {
                         TV = (TextView) findViewById(R.id.tue7);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("수")) {
                         TV = (TextView) findViewById(R.id.wed7);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("목")) {
                         TV = (TextView) findViewById(R.id.thu7);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("금")){
                         TV = (TextView) findViewById(R.id.fri7);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
@@ -339,35 +339,35 @@ public class EntireTTActivity extends AppCompatActivity {
                     if (A.substring(0, 1).equals("월")) {
                         TV = (TextView) findViewById(R.id.mon8);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("화")) {
                         TV = (TextView) findViewById(R.id.tue8);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("수")) {
                         TV = (TextView) findViewById(R.id.wed8);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("목")) {
                         TV = (TextView) findViewById(R.id.thu8);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("금")){
                         TV = (TextView) findViewById(R.id.fri8);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
@@ -377,35 +377,35 @@ public class EntireTTActivity extends AppCompatActivity {
                     if (A.substring(0, 1).equals("월")) {
                         TV = (TextView) findViewById(R.id.mon9);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("화")) {
                         TV = (TextView) findViewById(R.id.tue9);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("수")) {
                         TV = (TextView) findViewById(R.id.wed9);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("목")) {
                         TV = (TextView) findViewById(R.id.thu9);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);
                     } else if (A.substring(0, 1).equals("금")){
                         TV = (TextView) findViewById(R.id.fri9);
                         if (nameflag == 0) {
-                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).time);
+                            TV.setText(Info.get(i).name + Info.get(i).professor + Info.get(i).lectureTime);
                             nameflag = 1;
                         }
                         TV.setBackgroundColor(col);

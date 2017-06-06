@@ -16,9 +16,9 @@ import static com.example.a4f.myapplication.R.id.courseCode;
 
 public class CourseListAdapter extends BaseAdapter {
     private Context context;
-    private List<MySubjectInfo> courseList;
+    private List<SubjectInfo> courseList;
     MakeTTFragment a = new MakeTTFragment();
-    public CourseListAdapter(Context context,List<MySubjectInfo> course) {
+    public CourseListAdapter(Context context,List<SubjectInfo> course) {
         this.context=context;
         this.courseList =course;
     }

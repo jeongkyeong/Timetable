@@ -14,6 +14,7 @@ public class DBTable {
                 SUBJECT_PLACETIME = "SUBJECT_PLACETIME",
                 SUBJECT_CREDIT = "SUBJECT_CREDIT",
                 SUBJECT_DEPT = "SUBJECT_DEPT",
+                SUBJECT_SUBJECT = "SUBJECT_SUBJECT",
                 SUBJECT_PROFESSOR= "SUBJECT_PROFESSOR";
     }
 }
