@@ -46,11 +46,12 @@ public class CourseListAdapter extends BaseAdapter {
             TextView coursePlace = (TextView) v.findViewById(R.id.coursePlace);
             courseCode.setText("code : " + courseList.get(i).course_code);
             courseTitle.setText("Title : " + courseList.get(i).name);
-            courseCredit.setText("credit : " + courseList.get(i).credit);
+            courseCredit.setText("Title : " + courseList.get(i).credit);
             courseProf.setText("professor : " + courseList.get(i).professor);
             coursePlace.setText("place / time : " + courseList.get(i).placeTime);
             v.setTag(courseList.get(i).course_id);
         }
         return v;
     }
+
 }

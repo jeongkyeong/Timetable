@@ -1,11 +1,16 @@
 package com.example.a4f.myapplication;
 import org.json.*;
+
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -24,7 +29,7 @@ public class MakeTTFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    public static ArrayList<MySubjectInfo> List = new ArrayList<MySubjectInfo>();
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -32,6 +37,8 @@ public class MakeTTFragment extends Fragment {
     private CourseListAdapter courseAdapter;
     private List<SubjectInfo> courseList;
     static String check;
+    static int count =0;
+    static int index = 0;
     public MakeTTFragment() {
         // Required empty public constructor
     }
@@ -159,5 +166,30 @@ public class MakeTTFragment extends Fragment {
                 courseListView.setAdapter(courseAdapter);
             }
         });
+        courseListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+           // @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+              //  List.get(index).course_id = courseList.get(position).course_id;
+               // List.get(index).course_code = courseList.get(position).course_code;
+             //   List.get(index).credit = courseList.get(position).name;
+              //  List.get(index).name = courseList.get(position).credit;
+              //  List.get(index).lectureTime = courseList.get(position).lectureTime;
+              //  List.get(index).dept = courseList.get(position).dept;
+              //  List.get(index).subject = courseList.get(position).subject;
+                //List.get(index).professor = courseList.get(position).professor;
+                //List.get(index).placeTime = courseList.get(position).placeTime;
+                //index++;
+                String placeTime = courseList.get(position).placeTime;
+                String professor = courseList.get(position).professor;
+                String name = courseList.get(position).credit;
+                count++;
+                Intent i = new Intent(getActivity(), EntireTTActivity.class);
+                i.putExtra("placeTime",placeTime);
+                i.putExtra("professor",professor);
+                i.putExtra("name",name);
+                startActivity(i);
+            }
+        });
+
     }
 }
