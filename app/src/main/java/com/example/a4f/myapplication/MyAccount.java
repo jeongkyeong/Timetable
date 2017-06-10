@@ -15,7 +15,7 @@ public class MyAccount extends AppCompatActivity {
     EditText name,password,userName,dept;
     Spinner grade;
     String strName,strUN,strPW,strDept;
-    private String username;
+    public String username;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.myaccount);

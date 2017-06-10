@@ -2,6 +2,7 @@ package com.example.a4f.myapplication;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.design.widget.Snackbar;
@@ -11,6 +12,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import java.sql.Connection;
@@ -18,6 +22,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.Statement;
+import java.util.concurrent.ExecutionException;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -91,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
                         .create();
                 dialog.show();
                 accoutID=username;
+                requestUserInfo(username,password);
                 Intent i = new Intent(MainActivity.this, NavActivity.class);
                 i.putExtra("username",username);
                 startActivity(i);
@@ -105,5 +111,35 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         };
 
+    }
+    public void requestUserInfo(String name,String pw){         // 성공한 로그인 user정보를 파일로 저장해놓음. 나중에 user정보를 다른화면에서 사용하도록.
+        BackgroundWorker backgroundWorker=new BackgroundWorker(this);
+        String type="user info";
+        String dept;
+        String grade;
+        try {
+            String result = backgroundWorker.execute(type, name, pw).get();
+            try {
+                JSONObject jsonObject = new JSONObject(result);
+                JSONArray jsonArray = jsonObject.getJSONArray("user");
+                JSONObject object=jsonArray.getJSONObject(0);
+                grade=object.getString("grade");
+                dept=object.getString("dept");
+
+                SharedPreferences userData=getSharedPreferences("userData",MODE_PRIVATE);   //SharedPreferences를 활용해 xml파일로저장.
+                SharedPreferences.Editor editor=userData.edit();
+                editor.putString("ID",name);
+                editor.putString("Password",pw);
+                editor.putString("Grade",grade);
+                editor.putString("Dept",dept);
+                editor.commit();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        } catch (InterruptedException e) {
+             e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -38,7 +38,6 @@ public class CourseListAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         View v=View.inflate(context,R.layout.course,null);
-        if(courseList.get(i).subject.equals(a.check)) {
             TextView courseCode = (TextView) v.findViewById(R.id.courseCode);
             TextView courseTitle = (TextView) v.findViewById(R.id.courseTitle);
             TextView courseCredit = (TextView) v.findViewById(R.id.courseCredit);
@@ -50,7 +49,8 @@ public class CourseListAdapter extends BaseAdapter {
             courseProf.setText("professor : " + courseList.get(i).professor);
             coursePlace.setText("place / time : " + courseList.get(i).placeTime);
             v.setTag(courseList.get(i).course_id);
-        }
+
+
         return v;
     }
 
