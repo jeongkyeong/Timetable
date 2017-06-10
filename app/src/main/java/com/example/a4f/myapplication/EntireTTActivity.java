@@ -1,5 +1,6 @@
 package com.example.a4f.myapplication;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -8,8 +9,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by 태홍 on 2017-05-30.
@@ -17,11 +23,20 @@ import java.util.List;
 public class EntireTTActivity extends AppCompatActivity {
     static int colorflag = 1;
     static int count =0;
+    private String grade;
+    private int credits;
+    private String major;
+    private String noClasses;
+    private ArrayList<SubjectInfo> courseList;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.entiretimetable);
         Intent i = getIntent();
-
+        courseList=new ArrayList<SubjectInfo>();
+        grade=i.getStringExtra("grade");
+        credits=Integer.parseInt(i.getStringExtra("credits"));
+        major=i.getStringExtra("major");
+        noClasses=i.getStringExtra("noClass");
         if(count==0) {
             good("ACT", "도선재", "310관(310관) 620호 <강의실>(월3,4, 화3,4, 수3,4, 목3,4, 금3,4)");
             count++;
@@ -446,5 +461,55 @@ public class EntireTTActivity extends AppCompatActivity {
                     break;
             }
         }
+    }
+
+    public void btnMakeTableClick(View view){
+        BackgroundWorker backgroundWorker=new BackgroundWorker(this);
+        String type="make table";
+        SharedPreferences userData = getSharedPreferences("userData", MODE_PRIVATE);
+        String deptartment = userData.getString("Dept","");
+
+        try {
+            String result=backgroundWorker.execute(type,grade,deptartment).get();
+            courseList.clear();
+            try{
+                int count=0;
+                JSONObject jsonObject =new JSONObject(result);
+                JSONArray jsonArray=jsonObject.getJSONArray("response");
+                String course_id;
+                String name; //강의명
+                String grade;
+                String major;
+                String lectureTime; //강의시간
+                String credit;//학점
+                String dept; //학부
+                String professor;// 교수
+                while(count<jsonArray.length()) {       //db에서 받아온정보를 ArrayList에 하나씩 담음.
+                    JSONObject object=jsonArray.getJSONObject(count);
+                    course_id=object.getString("course_id");
+                    name=object.getString("course_name");
+                    grade=object.getString("grade");
+                    lectureTime=object.getString("lecture_time");
+                    dept=object.getString("department");
+                    professor=object.getString("professor");
+                    major=object.getString("major");
+                    credit = object.getString("credit");
+                    SubjectInfo course=new SubjectInfo(course_id, "",  name,credit,lectureTime, dept,major, professor,"");
+                    courseList.add(course);
+                    count++;
+                }
+            }catch (JSONException e){ }
+
+        }   catch (Exception e) { e.printStackTrace(); }
+        Combination combination=new Combination(courseList,credits);
+
+        combination.doCombination(courseList.size(),2,0);
+    }
+
+    public void onBackPressed() {
+        Intent i = new Intent(EntireTTActivity.this, NavActivity.class);
+        startActivity(i);
+        finish();
+
     }
 }

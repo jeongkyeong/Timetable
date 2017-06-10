@@ -2,11 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:background="#ffffff"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="511dp">
 
         <TableRow
             android:layout_width="match_parent"
@@ -49,6 +50,7 @@
                 android:layout_height="50dp"
                 android:text="Fri" />
 
+
         </TableRow>
 
         <TableRow
@@ -63,34 +65,34 @@
                 android:text="09:00~10:00" />
 
             <TextView
-            android:id="@+id/mon1"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/mon1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/tue1"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/tue1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/wed1"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/wed1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/thu1"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/thu1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/fri1"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/fri1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
         </TableRow>
 
         <TableRow
@@ -105,34 +107,34 @@
                 android:text="10:00~11:00" />
 
             <TextView
-            android:id="@+id/mon2"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/mon2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/tue2"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/tue2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/wed2"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/wed2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/thu2"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/thu2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/fri2"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/fri2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
         </TableRow>
 
         <TableRow
@@ -147,34 +149,34 @@
                 android:text="11:00~12:00" />
 
             <TextView
-            android:id="@+id/mon3"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/mon3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/tue3"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/tue3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/wed3"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/wed3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/thu3"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/thu3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/fri3"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/fri3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
         </TableRow>
 
         <TableRow
@@ -189,34 +191,34 @@
                 android:text="12:00~13:00" />
 
             <TextView
-            android:id="@+id/mon4"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/mon4"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/tue4"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/tue4"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/wed4"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/wed4"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/thu4"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/thu4"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/fri4"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/fri4"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
         </TableRow>
 
         <TableRow
@@ -231,34 +233,34 @@
                 android:text="13:00~14:00" />
 
             <TextView
-            android:id="@+id/mon5"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/mon5"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/tue5"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/tue5"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/wed5"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/wed5"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/thu5"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/thu5"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/fri5"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/fri5"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
         </TableRow>
 
         <TableRow
@@ -273,34 +275,34 @@
                 android:text="14:00~15:00" />
 
             <TextView
-            android:id="@+id/mon6"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/mon6"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/tue6"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/tue6"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/wed6"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/wed6"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/thu6"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/thu6"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/fri6"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/fri6"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
         </TableRow>
 
@@ -316,34 +318,34 @@
                 android:text="15:00~16:00" />
 
             <TextView
-            android:id="@+id/mon7"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/mon7"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/tue7"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/tue7"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/wed7"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/wed7"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/thu7"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/thu7"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/fri7"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/fri7"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
         </TableRow>
 
         <TableRow
@@ -358,34 +360,34 @@
                 android:text="16:00~17:00" />
 
             <TextView
-            android:id="@+id/mon8"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/mon8"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/tue8"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/tue8"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/wed8"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/wed8"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/thu8"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/thu8"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/fri8"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/fri8"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
         </TableRow>
 
         <TableRow
@@ -400,35 +402,48 @@
                 android:text="17:00~18:00" />
 
             <TextView
-            android:id="@+id/mon9"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/mon9"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/tue9"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/tue9"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/wed9"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/wed9"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/thu9"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/thu9"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
 
             <TextView
-            android:id="@+id/fri9"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="" />
+                android:id="@+id/fri9"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="" />
         </TableRow>
     </TableLayout>
 
+    <Button
+        android:id="@+id/btnMakeTT"
+        android:onClick="btnMakeTableClick"
+        android:layout_width="115dp"
+        android:layout_height="36dp"
+        android:layout_gravity="left"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Make Table"
+        android:textColor="#FFFFFF"
+        android:textSize="15dp"
+        android:textStyle="normal" />
 </LinearLayout>
