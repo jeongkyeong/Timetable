@@ -88,8 +88,8 @@ public class Combination {
             }
         }
 
-        if(!checkTime()) resultList.clear();
-        else dbList.add(resultList);
+        if(checkTime()&&!resultList.isEmpty()) dbList.add(new ArrayList<SubjectInfo>(resultList));
+        resultList.clear();
         initArr();
     }
 
@@ -97,7 +97,7 @@ public class Combination {
         // n : 전체 개수
         // r : 뽑을 개수
         // index 배열이다보니 현재 배열의 어디를 가리키고 있는지 필요하므로.
-        if(r==0){
+        if(r==0||n<0){
             return;
         }
         else if(n==r){
