@@ -36,11 +36,11 @@
      </string-array>
 
      <string-array name="gonggang"> 
-    <item >Monday</item> 
-    <item >Tuesday</item> 
-    <item >Wednesday</item> 
-    <item >Thursday</item> 
-    <item >Friday</item> 
+    <item >월</item> 
+    <item >화</item> 
+    <item >수</item> 
+    <item >목</item> 
+    <item >금</item> 
      </string-array>
 
      <string-array name="lunch"> 

@@ -1,5 +1,8 @@
 package com.example.a4f.myapplication;
 
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
@@ -13,17 +16,21 @@ public class Combination {
     private ArrayList <SubjectInfo> arrList;     //기준 어레이리스트
     private ArrayList<SubjectInfo> stList; //조합을 저장할 스택리스트
     private ArrayList<SubjectInfo> resultList; //요구학점 조건을 만족한 최종 리스트
+    private ArrayList<ArrayList<SubjectInfo>> dbList;
+    private String noClass;
     private int limitCr=0;
     private enum Day {월,화,수,목,금};
     private int [][] timeArr=new int[9][5];
-    public Combination(ArrayList<SubjectInfo> arr,int credits){
+    public Combination(ArrayList<SubjectInfo> arr,int credits,String noClass){
         this.arrList = arr;             //배열을 받아 객체에 저장한다.
         stList = new ArrayList<SubjectInfo>(); //스택에 메모리를 할당한다.
         resultList=new ArrayList<SubjectInfo>();
         limitCr=credits;
+        this.noClass=noClass;
+        dbList=new ArrayList<ArrayList<SubjectInfo>>();
     }
-    public ArrayList<SubjectInfo> getResultList(){
-        return resultList;
+    public ArrayList<ArrayList<SubjectInfo>> getTabletList(){
+        return dbList;
     }
 
     public boolean checkTime() //시간표 중복된거 있는지 검사
@@ -36,23 +43,33 @@ public class Combination {
         return true;
     }
 
-    public void parsingTime(String time,int level){     //시간 parsing
+    public boolean parsingTime(String time,int level){     //시간 parsing
         String tok="";
         if(level==0){       //  0단계 : '/'로 구분된 시간 구분
             StringTokenizer stoken=new StringTokenizer(time,"/");
             while(stoken.hasMoreTokens()) {
-                tok=stoken.nextToken();
-                parsingTime(tok,level+1);
+                tok=stoken.nextToken().trim();
+                if(!parsingTime(tok,level+1)) return false;
             }
         }else if(level==1){     //  1단계 화1,2,3 -> 화요일 1,2,3 을 timeArr배열에 1로 표시.
             String strDay=time.substring(0,1);
+            if(strDay.equals(noClass)) return false;
             Day day=Day.valueOf(time.substring(0,1));
-            tok=time.substring(0);
+            tok=time.substring(1);
             StringTokenizer stoken=new StringTokenizer(tok,",");
             while(stoken.hasMoreElements()){
-                tok=stoken.nextToken();
+                tok=stoken.nextToken().trim();
                 int timeNum=Integer.parseInt(tok);
-                timeArr[timeNum][day.ordinal()]+=1;
+                timeArr[timeNum-1][day.ordinal()]+=1;
+            }
+        }
+        return true;
+    }
+    public void initArr()
+    {
+        for(int i=0;i<9;i++) {
+            for(int j=0;j<5;j++) {
+                timeArr[i][j]=0;
             }
         }
     }
@@ -64,12 +81,16 @@ public class Combination {
         }
         if(sum<=limitCr) {
             for(int i=0;i<stList.size();i++) {
-                parsingTime(stList.get(i).lectureTime,0);
-                SubjectInfo course =stList.get(i);
-                resultList.add(course);
+                if(parsingTime(stList.get(i).lectureTime,0)){
+                    SubjectInfo course =stList.get(i);
+                    resultList.add(course);
+                }
             }
         }
+
         if(!checkTime()) resultList.clear();
+        else dbList.add(resultList);
+        initArr();
     }
 
     public void doCombination(int n, int r, int index){
@@ -77,8 +98,6 @@ public class Combination {
         // r : 뽑을 개수
         // index 배열이다보니 현재 배열의 어디를 가리키고 있는지 필요하므로.
         if(r==0){
-            //0개를 뽑는다는건 더 이상 뽑을 것이 없다는 말과 같으므로  스택을 출력하고 함수를 종료한다.
-            checkCond();
             return;
         }
         else if(n==r){

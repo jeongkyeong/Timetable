@@ -6,13 +6,16 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -27,7 +30,9 @@ public class EntireTTActivity extends AppCompatActivity {
     private int credits;
     private String major;
     private String noClasses;
+    private ArrayList<ArrayList<SubjectInfo>> tableList;
     private ArrayList<SubjectInfo> courseList;
+    private Spinner tableSpinner;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.entiretimetable);
@@ -37,6 +42,7 @@ public class EntireTTActivity extends AppCompatActivity {
         credits=Integer.parseInt(i.getStringExtra("credits"));
         major=i.getStringExtra("major");
         noClasses=i.getStringExtra("noClass");
+        tableSpinner=(Spinner)findViewById(R.id.spinnerTable);
         if(count==0) {
             good("ACT", "도선재", "310관(310관) 620호 <강의실>(월3,4, 화3,4, 수3,4, 목3,4, 금3,4)");
             count++;
@@ -501,9 +507,21 @@ public class EntireTTActivity extends AppCompatActivity {
             }catch (JSONException e){ }
 
         }   catch (Exception e) { e.printStackTrace(); }
-        Combination combination=new Combination(courseList,credits);
+        Combination combination=new Combination(courseList,credits,noClasses);
 
         combination.doCombination(courseList.size(),2,0);
+        ArrayList<String> entries=new ArrayList<String>();
+        tableList=combination.getTabletList();
+        setEntries(tableList,entries);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,entries);
+        tableSpinner.setAdapter(arrayAdapter);
+    }
+
+    public void setEntries(ArrayList<ArrayList<SubjectInfo>> dbList,ArrayList<String> entries)
+    {
+        for(int i=0;i<dbList.size();i++) {
+            entries.add("Table "+i);
+        }
     }
 
     public void onBackPressed() {
