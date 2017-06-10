@@ -185,6 +185,7 @@ public class EditProfile extends AppCompatActivity {
                 String password = item.getString(TAG_PASSWORD);
                 String dept = item.getString(TAG_DEPT);
                 String grade = item.getString(TAG_GRADE);
+
                 getName = name;
                 getUsername = username;
                 getPassword = password;
@@ -266,6 +267,7 @@ public class EditProfile extends AppCompatActivity {
         finish();
 
     }
+
     public void onBackPressed() {
         Intent i = new Intent(EditProfile.this, MainActivity.class);
         startActivity(i);

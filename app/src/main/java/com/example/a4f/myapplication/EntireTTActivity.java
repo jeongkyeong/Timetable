@@ -45,6 +45,7 @@ public class EntireTTActivity extends AppCompatActivity {
         {
             good("ACT","도선재","310관(310관) 620호 <강의실>(월3,4, 화3,4, 수3,4, 목3,4, 금3,4)");
             good("글쓰기","최유숙","310관(310관) 622호 <강의실>(월7,8, 화7,8, 수7,8, 목7,8, 금7,8)");
+            count=0;
         }
         else{}
             //good(i.getExtras().getString("placeTime"));

@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -42,13 +43,16 @@ public class Register extends AppCompatActivity {
         });
     }
 
-    public void onReg(View view)
-    {                                       // register Student info to MySQL
+    public void onReg(View view) throws UnsupportedEncodingException {                                       // register Student info to MySQL
         strName=name.getText().toString();
         strUN = userName.getText().toString();
         strPW = password.getText().toString();
         strDept=deptSpinner.getSelectedItem().toString();
         strgrade=gradeSpinner.getSelectedItem().toString();
+
+        String utfdept = new String(strDept.getBytes("UTF-8"));
+        strDept = utfdept;
+
         String type="register";
         BackgroundWorker backgroundWorker=new BackgroundWorker(this);
         backgroundWorker.execute(type,strName,strUN,strPW,strDept,strgrade);
