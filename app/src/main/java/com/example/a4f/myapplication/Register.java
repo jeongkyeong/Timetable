@@ -88,7 +88,7 @@ public class Register extends AppCompatActivity {
             String type="IDcheck";
             BackgroundWorker backgroundWorker=new BackgroundWorker(this);
             String result= backgroundWorker.execute(type,strUN).get();
-            name.setText(result);
+            
             boolean check=result.equals("1");
             if (check){
                 AlertDialog.Builder builder= new AlertDialog.Builder(Register.this);
