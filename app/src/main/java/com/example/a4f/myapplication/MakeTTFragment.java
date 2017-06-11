@@ -166,30 +166,5 @@ public class MakeTTFragment extends Fragment {
                 courseListView.setAdapter(courseAdapter);
             }
         });
-        courseListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-           // @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-              //  List.get(index).course_id = courseList.get(position).course_id;
-               // List.get(index).course_code = courseList.get(position).course_code;
-             //   List.get(index).credit = courseList.get(position).name;
-              //  List.get(index).name = courseList.get(position).credit;
-              //  List.get(index).lectureTime = courseList.get(position).lectureTime;
-              //  List.get(index).dept = courseList.get(position).dept;
-              //  List.get(index).subject = courseList.get(position).subject;
-                //List.get(index).professor = courseList.get(position).professor;
-                //List.get(index).placeTime = courseList.get(position).placeTime;
-                //index++;
-                String placeTime = courseList.get(position).placeTime;
-                String professor = courseList.get(position).professor;
-                String name = courseList.get(position).credit;
-                count++;
-                Intent i = new Intent(getActivity(), EntireTTActivity.class);
-                i.putExtra("placeTime",placeTime);
-                i.putExtra("professor",professor);
-                i.putExtra("name",name);
-                startActivity(i);
-            }
-        });
-
     }
 }
