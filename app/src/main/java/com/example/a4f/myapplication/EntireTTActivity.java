@@ -50,8 +50,14 @@ public class EntireTTActivity extends AppCompatActivity {
         apply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for(int i=0;i<courseList.size();i++){
-                    good(courseList.get(i).name,courseList.get(i).professor,courseList.get(i).lectureTime);
+                int select= Integer.parseInt(tableSpinner.getSelectedItem().toString().substring(5).trim())-1;
+                String name,prof,time;
+                for(int i=0;i<tableList.get(select).size();i++) {
+                    name = tableList.get(select).get(i).name;
+                    prof=tableList.get(select).get(i).professor;
+                    time = tableList.get(select).get(i).lectureTime;
+                    good(name,prof,time);
+
                 }
             }
         });
@@ -494,8 +500,9 @@ public class EntireTTActivity extends AppCompatActivity {
 
         }   catch (Exception e) { e.printStackTrace(); }
         Combination combination=new Combination(courseList,credits,noClasses);
-
-        combination.doCombination(courseList.size(),2,0);
+        for(int i=credits/3;i<credits/2;i++){
+            combination.doCombination(courseList.size(),i,0);
+        }
         ArrayList<String> entries=new ArrayList<String>();
         tableList=combination.getTabletList();
         setEntries(tableList,entries);
@@ -510,6 +517,11 @@ public class EntireTTActivity extends AppCompatActivity {
         }
     }
 
+    public void btnApplyClick(View view)
+    {
+
+
+    }
     public void onBackPressed() {
         Intent i = new Intent(EntireTTActivity.this, NavActivity.class);
         startActivity(i);

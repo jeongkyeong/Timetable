@@ -79,7 +79,7 @@ public class Combination {
         for(int i=0;i<stList.size();i++){
             sum+=Integer.parseInt(stList.get(i).credit.substring(0,1));
         }
-        if(sum<=limitCr) {
+        if(sum<=limitCr&&sum>=6) {
             for(int i=0;i<stList.size();i++) {
                 if(parsingTime(stList.get(i).lectureTime,0)){
                     SubjectInfo course =stList.get(i);
@@ -97,7 +97,8 @@ public class Combination {
         // n : 전체 개수
         // r : 뽑을 개수
         // index 배열이다보니 현재 배열의 어디를 가리키고 있는지 필요하므로.
-        if(r==0||n<0){
+        if(r==0){
+            checkCond();
             return;
         }
         else if(n==r){
@@ -106,14 +107,17 @@ public class Combination {
             checkCond(); //스택을 보여준다.
             stList.clear();        //이후 전부 pop을 시켜 다음 과정을 진행한다.
         }
+        else if(n<0||r<0) return;
         else{
             //저 두가지 예외 사항을 빼면 점화식대로 진행 index를 포함하는 경우
-            stList.add(arrList.get(index));
-            doCombination(n-1,r-1,index+1); //index를 스택에 넣은상태로 index를 1옮겨 그대로 진행.
+            try{
+                stList.add(arrList.get(index));
+                doCombination(n-1,r-1,index+1); //index를 스택에 넣은상태로 index를 1옮겨 그대로 진행.
 
-            //index를 포함하지 않는 경우
-            stList.remove(arrList.get(index)); //index를 제거해주고
-            doCombination(n-1, r, index+1); //index를 제외한 상태에서 n-1Cr 진행.
+                //index를 포함하지 않는 경우
+                stList.remove(arrList.get(index)); //index를 제거해주고
+                doCombination(n-1, r, index+1); //index를 제외한 상태에서 n-1Cr 진행.
+            }catch (Exception e){}
         }
     }
 }
