@@ -33,7 +33,7 @@ public class EntireTTActivity extends AppCompatActivity {
     private int credits;
     private String major;
     private String noClasses;
-    private ArrayList<ArrayList<SubjectInfo>> tableList;
+    private ArrayList<SubjectList> tableList;
     private ArrayList<SubjectInfo> courseList;
     private Spinner tableSpinner;
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,6 @@ public class EntireTTActivity extends AppCompatActivity {
         courseList=new ArrayList<SubjectInfo>();
         grade=i.getStringExtra("grade");
         credits=Integer.parseInt(i.getStringExtra("credits"));
-        major=i.getStringExtra("major");
         noClasses=i.getStringExtra("noClass");
         tableSpinner=(Spinner)findViewById(R.id.spinnerTable);
         //good(i.getExtras().getString("LectureTime"));
@@ -53,12 +52,12 @@ public class EntireTTActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 tableclear();
-                int select= Integer.parseInt(tableSpinner.getSelectedItem().toString().substring(5).trim())-1;
+                int select= Integer.parseInt(tableSpinner.getSelectedItem().toString().substring(5).trim());
                 String name,prof,time;
-                for(int i=0;i<tableList.get(select).size();i++) {
-                    name = tableList.get(select).get(i).name;
-                    prof=tableList.get(select).get(i).professor;
-                    time = tableList.get(select).get(i).lectureTime;
+                for(int i=0;i<tableList.get(select).list.size();i++) {
+                    name = tableList.get(select).list.get(i).name;
+                    prof=tableList.get(select).list.get(i).professor;
+                    time = tableList.get(select).list.get(i).lectureTime;
                     good(name,prof,time);
                 }
             }
@@ -508,12 +507,14 @@ public class EntireTTActivity extends AppCompatActivity {
         }
         ArrayList<String> entries=new ArrayList<String>();
         tableList=combination.getTabletList();
-        setEntries(tableList,entries);
+        HashSet<SubjectList> listSet=new HashSet<SubjectList>(tableList);
+        ArrayList<SubjectList> newTableList=new ArrayList<SubjectList>(listSet);
+        setEntries(newTableList,entries);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,entries);
         tableSpinner.setAdapter(arrayAdapter);
     }
 
-    public void setEntries(ArrayList<ArrayList<SubjectInfo>> dbList,ArrayList<String> entries)
+    public void setEntries(ArrayList<SubjectList> dbList,ArrayList<String> entries)
     {
         for(int i=0;i<dbList.size();i++) {
             entries.add("Table "+i);

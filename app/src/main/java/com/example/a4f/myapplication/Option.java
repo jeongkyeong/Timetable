@@ -23,7 +23,6 @@ public class Option extends AppCompatActivity {
         setTitle("Filter Options");
         gradeSpin=(Spinner)findViewById(R.id.spinnerGrade);
         creditSpin = (Spinner) findViewById(R.id.spinnerCredits);
-        majorSpin = (Spinner) findViewById(R.id.spinnMajorCredit);
         noClasses = (Spinner) findViewById(R.id.spinnerGG);
     }
 
@@ -40,13 +39,11 @@ public class Option extends AppCompatActivity {
     public void btnConfirmClick(View view) {
         String strGrade = gradeSpin.getSelectedItem().toString();
         String strCredits = creditSpin.getSelectedItem().toString();
-        String strMajor=majorSpin.getSelectedItem().toString();
         String strNoClass=noClasses.getSelectedItem().toString();
         Toast.makeText(Option.this, "Confirmed", Toast.LENGTH_SHORT).show();
         Intent i = new Intent(Option.this, EntireTTActivity.class);
         i.putExtra("grade",strGrade);
         i.putExtra("credits",strCredits);
-        i.putExtra("major",strMajor);
         i.putExtra("noClass",strNoClass);
         startActivity(i);
     }

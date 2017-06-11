@@ -16,7 +16,7 @@ public class Combination {
     private ArrayList <SubjectInfo> arrList;     //기준 어레이리스트
     private ArrayList<SubjectInfo> stList; //조합을 저장할 스택리스트
     private ArrayList<SubjectInfo> resultList; //요구학점 조건을 만족한 최종 리스트
-    private ArrayList<ArrayList<SubjectInfo>> dbList;
+    private ArrayList<SubjectList> dbList;
     private String noClass;
     private int limitCr=0;
     private enum Day {월,화,수,목,금};
@@ -27,9 +27,9 @@ public class Combination {
         resultList=new ArrayList<SubjectInfo>();
         limitCr=credits;
         this.noClass=noClass;
-        dbList=new ArrayList<ArrayList<SubjectInfo>>();
+        dbList=new ArrayList<SubjectList>();
     }
-    public ArrayList<ArrayList<SubjectInfo>> getTabletList(){
+    public ArrayList<SubjectList> getTabletList(){
         return dbList;
     }
 
@@ -88,7 +88,7 @@ public class Combination {
             }
         }
 
-        if(checkTime()&&!resultList.isEmpty()) dbList.add(new ArrayList<SubjectInfo>(resultList));
+        if(checkTime()&&!resultList.isEmpty()) dbList.add(new SubjectList(resultList));
         resultList.clear();
         initArr();
     }
