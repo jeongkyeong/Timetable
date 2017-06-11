@@ -135,6 +135,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 String password = params[3];
                 String dept = params[4];
                 String grade = params[5];
+
                 URL url = new URL(regUrl);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
@@ -160,6 +161,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 while ((line = bufferedReader.readLine()) != null) {
                     result += line;
                 }
+
                 bufferedReader.close();
                 inputStream.close();
                 httpURLConnection.disconnect();

@@ -21,6 +21,7 @@ import android.widget.TextView;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -53,8 +54,8 @@ public class NavActivity extends AppCompatActivity
 
 
     ArrayList<HashMap<String, String>> mArrayList;
-    TextView , textView2;
-    String mJsonString, user, dept;
+    TextView tv, tv2;
+    String mJsonString;
 
 
     @Override
@@ -70,20 +71,10 @@ public class NavActivity extends AppCompatActivity
         Intent i =getIntent();
         username=i.getStringExtra("username");
         try {
-          //  task.execute("http://timetable.dothome.co.kr/getUser.php?username="+URLEncoder.encode(username,"UTF-8"));
+            task.execute("http://timetable.dothome.co.kr/getUser.php?username="+URLEncoder.encode(username,"UTF-8"));
         }catch (Exception e){
 
         }
-
-        textView = (TextView) findViewById(R.id.text_username);
-       // textView2 = (TextView) findViewById(R.id.text_department);
-
-        //user = getUsername;
-        //dept = getDept;
-
-        textView.setText(username);
-        //textView2.setText(dept.toString());
-        user= username;
 
 /*
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -103,6 +94,11 @@ public class NavActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    private void updateText() {
+        tv.setText(username);
+        tv2.setText(getDept+"  "+getGrade+"학년");
     }
 
     private class GetData extends AsyncTask<String, Void, String> {
@@ -216,7 +212,6 @@ public class NavActivity extends AppCompatActivity
                 getDept = dept;
                 getGrade = grade;
 
-
 /*
                 HashMap<String,String> hashMap = new HashMap<>();
 
@@ -243,6 +238,9 @@ public class NavActivity extends AppCompatActivity
             Log.d(TAG, "showResult : ", e);
         }
        // profileInfo();
+        this.tv = (TextView) findViewById(R.id.text_username);
+        this. tv2 = (TextView) findViewById(R.id.text_department);
+         updateText();
     }
 
     @Override
