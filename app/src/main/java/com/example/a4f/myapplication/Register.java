@@ -68,6 +68,7 @@ public class Register extends AppCompatActivity {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if(password.getText().toString().equals(passwordConfirm.getText().toString())) {
                     img.setVisibility(View.INVISIBLE);
+                    join.setEnabled(true);
                 } else {
 
                     img.setVisibility(View.VISIBLE);
@@ -88,7 +89,7 @@ public class Register extends AppCompatActivity {
             String type="IDcheck";
             BackgroundWorker backgroundWorker=new BackgroundWorker(this);
             String result= backgroundWorker.execute(type,strUN).get();
-            
+
             boolean check=result.equals("1");
             if (check){
                 AlertDialog.Builder builder= new AlertDialog.Builder(Register.this);
