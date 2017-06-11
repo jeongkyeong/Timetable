@@ -289,10 +289,6 @@ public class NavActivity extends AppCompatActivity
             Intent i = new Intent(NavActivity.this, MyAccount.class);
             i.putExtra("username",username);
             startActivity(i);
-        } else if (id == R.id.nav_enter) {
-            drawer.closeDrawer(GravityCompat.START);
-            Intent i = new Intent(NavActivity.this, EntireTTActivity.class);
-            startActivity(i);
         } else if (id == R.id.nav_make) {
             frag=new MakeTTFragment();
         } else if (id == R.id.nav_options) {
@@ -304,9 +300,6 @@ public class NavActivity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
             Intent i = new Intent(NavActivity.this, MainActivity.class);
             startActivity(i);
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
         }
         if(frag!=null) {
             FragmentTransaction ft=getSupportFragmentManager().beginTransaction();

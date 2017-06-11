@@ -25,7 +25,10 @@ public class MyAccount extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        Intent i = new Intent(MyAccount.this, NavActivity.class);
+        i.putExtra("username",username);
+        startActivity(i);
+        finish();
 
     }
 

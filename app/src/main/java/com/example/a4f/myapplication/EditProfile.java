@@ -6,14 +6,17 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-
+import android.widget.Button;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -50,8 +53,9 @@ public class EditProfile extends AppCompatActivity {
     private static final String TAG_PASSWORD ="password";
     private static final String TAG_DEPT ="dept";
     private static final String TAG_GRADE ="grade";
-
-
+    EditText name,password,userName,dept,grade,passwordConfirm;
+    ImageView img;
+    Button edit;
     ArrayList<HashMap<String, String>> mArrayList;
     ListView mlistView;
     String mJsonString;
@@ -63,9 +67,42 @@ public class EditProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.edit);
         setContentView(R.layout.profile);
-
+        name=(EditText)findViewById(R.id.etName);
+        userName=(EditText)findViewById(R.id.etId);
+        password = (EditText) findViewById(R.id.etPW);
+        passwordConfirm = (EditText)findViewById(R.id.etPW2);
+        dept=(EditText)findViewById(R.id.etDept);
+        grade=(EditText)findViewById(R.id.etGrade);
         //mTextViewResult = (TextView)findViewById(R.id.textView_main_result);
         //mlistView = (ListView) findViewById(R.id.listView_main_list);
+        img = (ImageView)findViewById(R.id.imageView4);
+        edit = (Button)findViewById(R.id.btnEdit);
+
+        passwordConfirm.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(password.getText().toString().equals(passwordConfirm.getText().toString())) {
+                    img.setVisibility(View.INVISIBLE);
+                    edit.setEnabled(true);
+                } else {
+
+                    img.setVisibility(View.VISIBLE);
+                    edit.setEnabled(false);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+
 
         mArrayList = new ArrayList<>();
         GetData task = new GetData();
@@ -240,18 +277,14 @@ public class EditProfile extends AppCompatActivity {
 
     }
     public void onEdit(View view){
-        EditText name,password,userName,dept,grade;
+
         String strName=getName;
         String strUN=getUsername;
         String strPW=getPassword;
         String strDept=getDept;
         String strgrade=getGrade;
 
-        name=(EditText)findViewById(R.id.etName);
-        userName=(EditText)findViewById(R.id.etId);
-        password = (EditText) findViewById(R.id.etPW);
-        dept=(EditText)findViewById(R.id.etDept);
-        grade=(EditText)findViewById(R.id.etGrade);
+
         if(name.getText().length()!=0){strName=name.getText().toString();}
         if(userName.getText().length()!=0){strUN = userName.getText().toString();}
         if(password.getText().length()!=0){strPW = password.getText().toString();}
@@ -263,16 +296,24 @@ public class EditProfile extends AppCompatActivity {
         BackgroundWorker backgroundWorker=new BackgroundWorker(this);
         backgroundWorker.execute(type,strName,strUN,strPW,strDept,strgrade);
         Intent i= new Intent(EditProfile.this,MyAccount.class);
+        i.putExtra("username",username);
         startActivity(i);
         finish();
 
     }
 
     public void onBackPressed() {
-        Intent i = new Intent(EditProfile.this, MainActivity.class);
+        Intent i = new Intent(EditProfile.this, NavActivity.class);
+        i.putExtra("username",username);
         startActivity(i);
         finish();
 
+    }
+    public void btnEditCancelClick(View view) {
+        Intent i = new Intent(EditProfile.this, NavActivity.class);
+        i.putExtra("username",username);
+        startActivity(i);
+        finish();
     }
 
 }
