@@ -76,7 +76,7 @@ public class Combination {
     }
     public void checkCond(){
         //스택에 있는 값들을 출력한다.
-        int sum=0;
+        int sum=0,sum2nd=0;
         for(int i=0;i<stList.size();i++){
             sum+=Integer.parseInt(stList.get(i).credit.substring(0,1));
         }
@@ -85,9 +85,11 @@ public class Combination {
                 if(parsingTime(stList.get(i).lectureTime,0)){
                     SubjectInfo course =stList.get(i);
                     resultList.add(course);
+                    sum2nd+=Integer.parseInt(stList.get(i).credit.substring(0,1));
                 }
             }
         }
+        if(sum2nd>limitCr||sum2nd<limitCr-4) resultList.clear();
 
         if(checkTime()&&!resultList.isEmpty()) dbList.add(new SubjectList(resultList));
         resultList.clear();
