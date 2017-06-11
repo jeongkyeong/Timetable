@@ -57,7 +57,6 @@ public class EntireTTActivity extends AppCompatActivity {
                     prof=tableList.get(select).get(i).professor;
                     time = tableList.get(select).get(i).lectureTime;
                     good(name,prof,time);
-
                 }
             }
         });
@@ -71,9 +70,10 @@ public class EntireTTActivity extends AppCompatActivity {
             String[] Lecturetime1 = Lecturetime.split("\\/");
 
         for (int i=0; i<Lecturetime1.length;i++) {
-            FilllectureTimetable(name1, professor1, Lecturetime1[i], col);//c0] =월4,5,6/ 화4,5,6, 수4,5,6, 목4,5,6, 금4,5,6
+            FilllectureTimetable(name1, professor1, Lecturetime1[i].trim(), col);//c0] =월4,5,6/ 화4,5,6, 수4,5,6, 목4,5,6, 금4,5,6
         }
     }
+
     protected int choosecolor(int col)
     {
         switch(colorflag)
@@ -113,7 +113,7 @@ public class EntireTTActivity extends AppCompatActivity {
         String[] c = b.split(",");
         for(int i=0;i<c.length;i++)
         {
-            switch (Integer.parseInt(c[i]))
+            switch (Integer.parseInt(c[i].trim()))
             {
                 case 1:
                     if (A.substring(0, 1).equals("월")) {
