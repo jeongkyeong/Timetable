@@ -80,7 +80,7 @@ public class Combination {
         for(int i=0;i<stList.size();i++){
             sum+=Integer.parseInt(stList.get(i).credit.substring(0,1));
         }
-        if(sum<=limitCr&&sum>=6) {
+        if(sum<=limitCr&&sum>=limitCr-4) {
             for(int i=0;i<stList.size();i++) {
                 if(parsingTime(stList.get(i).lectureTime,0)){
                     SubjectInfo course =stList.get(i);
