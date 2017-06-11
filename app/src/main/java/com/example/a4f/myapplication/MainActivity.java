@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }catch(Exception e) {
             e.printStackTrace();
-        };
+        }
 
     }
     public void requestUserInfo(String name,String pw){         // 성공한 로그인 user정보를 파일로 저장해놓음. 나중에 user정보를 다른화면에서 사용하도록.

@@ -19,7 +19,8 @@ public class Combination {
     private ArrayList<SubjectList> dbList;
     private String noClass;
     private int limitCr=0;
-    private enum Day {월,화,수,목,금};
+    private enum Day {월,화,수,목,금}
+
     private int [][] timeArr=new int[9][5];
     public Combination(ArrayList<SubjectInfo> arr,int credits,String noClass){
         this.arrList = arr;             //배열을 받아 객체에 저장한다.
